@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:17:32 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 13:46:12 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/10/18 10:26:10 by qdenizar          #+#    #+#             */
+/*   Updated: 2023/10/18 13:46:27 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 //CONSTRUCTEURS
 
 //default
-Ice::Ice()
+Cure::Cure()
 {
-	this->_type = "ice";
-	std::cout << "\033[33mIce default constructor called \033[0m " << std::endl;
+	this->_type = "cure";
+	std::cout << "\033[33mCure default constructor called \033[0m " << std::endl;
 }
 
-
 //cpy constructor
-Ice::Ice(const Ice&	newIce)
+Cure::Cure(const Cure&	newCure)
 { 
-	std::cout << "\033[33mIce Copy constructor called\033[0m " << std::endl;
-	*this = newIce;
+	std::cout << "\033[33mCure Copy constructor called\033[0m " << std::endl;
+	*this = newCure;
 }
 
 //Copy assignment operator
-Ice& Ice::operator=(Ice const & objectToCopy)
+Cure& Cure::operator=(Cure const & objectToCopy)
 {
-	std::cout << "\033[33mIce Copy assignment operator called\033[0m " << std::endl;
+	std::cout << "\033[33mCure Copy assignment operator called\033[0m " << std::endl;
 	if (this != &objectToCopy)
 	{
 		this->_type = objectToCopy._type;
@@ -41,20 +40,20 @@ Ice& Ice::operator=(Ice const & objectToCopy)
 }
 
 //destructor
-Ice::~Ice()
+Cure::~Cure()
 {
-	std::cout << "Hey you i'm \033[36mIce\033[0m destructor" << std::endl;
+	std::cout << "Hey you i'm \033[36mCure\033[0m destructor" << std::endl;
 }
 
 //FUNCTIONS
-AMateria *Ice::clone() const
+AMateria *Cure::clone() const
 {
-	return (new Ice(*this));
+	return (new Cure(*this));
 }
 
-void Ice::use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at ";
+	std::cout << "* heals <";
 	std::cout << target.getName();
-	std::cout << " *" << std::endl;
+	std::cout << "’s wounds *" << std::endl;
 }

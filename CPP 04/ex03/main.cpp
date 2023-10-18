@@ -6,11 +6,16 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:38:35 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/16 11:59:11 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:34:52 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <string>
+
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
 
 int main()
 {

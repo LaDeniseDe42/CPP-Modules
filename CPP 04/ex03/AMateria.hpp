@@ -6,14 +6,15 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:29 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/16 14:00:11 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:34:54 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include "Ice_hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 class AMateria
 {

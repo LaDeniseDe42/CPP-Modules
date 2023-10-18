@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:17:15 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 11:46:46 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/10/18 13:31:08 by qdenizar          #+#    #+#             */
+/*   Updated: 2023/10/18 13:36:22 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-#define ICE_HPP
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
-#include "AMateria.hpp"
-
-class Ice : public AMateria
+class ICharacter
 {
-    public :
-
-     //Orthodox Canonical Form
-    Ice(); //default constructor
-
-    Ice(const Ice&	newIce); //cpy constructor
-
-    Ice& operator=(Ice const & objectToCopy); //Copy assignment operator
-
-    ~Ice(); //destructor
-
-    // ICE FUNCTIONS
-    virtual AMateria *clone() const;
-    virtual void use(ICharacter& target);
-
+public:
+virtual ~ICharacter() {}
+virtual std::string const & getName() const = 0;
+virtual void equip(AMateria* m) = 0;
+virtual void unequip(int idx) = 0;
+virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

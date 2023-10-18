@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:27 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/16 12:16:42 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:34:56 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 //default
 AMateria::AMateria()
 {
-	this->type = "Unknown";
+	this->_type = "Unknown";
 	std::cout << "\033[33mAMateria default constructor called \033[0m " << std::endl;
 }
 
 //constructor with string
-AMateria::AMateria(std::string type)
+AMateria::AMateria(std::string const & type)
 {
     std::cout << "\033[33mAMateria constructor with name called\033[0m " << std::endl;
-	this->type = type;
+	this->_type = type;
 }
 
 //cpy constructor
@@ -41,7 +41,7 @@ AMateria& AMateria::operator=(AMateria const & objectToCopy)
 	std::cout << "\033[33mAMateria Copy assignment operator called\033[0m " << std::endl;
 	if (this != &objectToCopy)
 	{
-		this->type = objectToCopy.type;
+		this->_type = objectToCopy._type;
 	}
 	return (*this);
 }
@@ -55,17 +55,13 @@ AMateria::~AMateria()
 
 //functions
 
-std::string const & getType() const; //Returns the materia type
+std::string const & AMateria::getType() const; //Returns the materia type
 {
-
+	return (this->_type);
 }
 
-virtual AMateria* clone()
-{
 
-}
-
-virtual void use(ICharacter& target)
+void AMetaria::use(ICharacter& target)
 {
     
 }
