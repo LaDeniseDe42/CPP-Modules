@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 08:55:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/20 13:32:19 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:34:24 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 	std::string	s2 = argv[3];
 	std::string	forOutput = filename + ".replace";
 
-	replaceString	replace(s1, s2);
-	if (replace.replaceInFile(filename, forOutput))
+	replaceString	repLace(s1, s2);
+	if (repLace.replaceInFile(filename, forOutput))
         std::cout << "Operation is a SUCCESS" << std::endl;
 	else
 	{

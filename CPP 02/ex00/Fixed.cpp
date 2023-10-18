@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:36:14 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/21 15:04:43 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:26:13 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed::Fixed() :stockFixedPointNumber(0)
 {
-	std::cout << "default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed&	newFixed) :stockFixedPointNumber(newFixed.stockFixedPointNumber)

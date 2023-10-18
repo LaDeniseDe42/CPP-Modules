@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:51:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/20 13:32:21 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:21:40 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	replaceString::replaceThisString(std::string& line)
 
 bool replaceString::replaceInFile(const std::string& inputFileName, const std::string& outputFileName)
 {
-	std::ifstream inputFile(inputFileName);
+	std::ifstream inputFile(inputFileName.c_str());
     if (!inputFile)
 	{
         std::cerr << "Erreur : Can't open inputFile" << std::endl;
         return false;
     }
 
-    std::ofstream outputFile(outputFileName);
+    std::ofstream outputFile(outputFileName.c_str());
     if (!outputFile)
 	{
         std::cerr << "Erreur : Cant't open outputFile" << std::endl;
