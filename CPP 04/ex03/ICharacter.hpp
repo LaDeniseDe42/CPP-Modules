@@ -6,12 +6,17 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:31:08 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 13:36:22 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:22:21 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP
+
+#include <iostream>
+#include <string>
+
+class AMateria;
 
 class ICharacter
 {

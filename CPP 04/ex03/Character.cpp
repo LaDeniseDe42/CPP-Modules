@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 14:50:54 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:23:18 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //default
 Character::Character()
 {
-    for ( i = 0; i < 4; i++)
+    for ( int i = 0; i < 4; i++)
     {
 	    this->slots[i] = NULL;
     }
@@ -32,7 +32,7 @@ Character::Character(const Character&	newCharacter)
     
 	std::cout << "\033[33mCharacter Copy constructor called\033[0m " << std::endl;
     this->name = newCharacter.name;
-	for ( i = 0; i < 4; i++)
+	for ( int i = 0; i < 4; i++)
     {
 	    this->slots[i] = newCharacter.slots[i] ? newCharacter.slots[i]->clone() : NULL;
     }
@@ -45,7 +45,7 @@ Character& Character::operator=(Character const & objectToCopy)
 	if (this != &objectToCopy)
 	{
         this->name = objectToCopy.name;
-		for ( i = 0; i < 4; i++)
+		for ( int i = 0; i < 4; i++)
         {
             delete this->slots[i];
 	        this->slots[i] = objectToCopy.slots[i] ? objectToCopy.slots[i]->clone() : NULL;
@@ -68,7 +68,7 @@ Character::Character(std::string const &name)
 Character::~Character()
 {
 	std::cout << "Hey you i'm \033[36mCharacter\033[0m destructor" << std::endl;
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         delete this->slots[i];
     }
@@ -85,7 +85,7 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         if (!this->slots[i])
         {
@@ -97,7 +97,11 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-    if (!this->slots[idx])
+    if (idx < 0 || idx > 3)
+    {
+        std::cout << "this is not a valid slot" << std::endl;
+    }
+    else if (!this->slots[idx])
     {
         std::cout << "this slot is empty" << std::endl;
     }
@@ -113,7 +117,6 @@ void Character::use(int idx, ICharacter& target)
     {
         this->slots[idx]->use(target);
     }
-
 }
 
 

@@ -6,11 +6,11 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:26:10 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 13:46:27 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:19:31 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
 //CONSTRUCTEURS
 

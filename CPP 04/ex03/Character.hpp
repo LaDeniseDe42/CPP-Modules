@@ -6,15 +6,15 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:15 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 14:37:04 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:24:50 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "ICharacter.hpp"
 #include "AMateria.hpp"
-
 
 class Character : public ICharacter
 {
@@ -32,7 +32,7 @@ class Character : public ICharacter
     ~Character(); //destructor
     Character(std::string const &name); // constructor with name
 
-    std::string const & getName() const
+    std::string const & getName() const;
     void equip(AMateria* m);
     void unequip(int idx);
     void use(int idx, ICharacter& target);

@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:27 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 13:34:56 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:18:44 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ AMateria::~AMateria()
 
 //functions
 
-std::string const & AMateria::getType() const; //Returns the materia type
+std::string const & AMateria::getType() const //Returns the materia type
 {
 	return (this->_type);
 }
 
 
-void AMetaria::use(ICharacter& target)
+void AMateria::use(ICharacter& target)
 {
-    
+    (void)target;
 }
