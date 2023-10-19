@@ -6,13 +6,13 @@
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 11:38:07 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/18 16:04:16 by qdenizar         ###   ########.fr        #
+#    Updated: 2023/10/19 12:29:13 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = AMateria
 
-FILES = main AMateria Ice Cure Character
+FILES = main AMateria Ice Cure Character MateriaSource
 
 SRCS = $(FILES:=.cpp)
 

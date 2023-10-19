@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 16:23:18 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:30:17 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ Character::Character(std::string const &name)
     {
         slots[i] = NULL;
     }
+    std::cout << "welcome in your new world : " << name << std::endl;
 }
 
 //destructor
@@ -90,6 +91,7 @@ void Character::equip(AMateria* m)
         if (!this->slots[i])
         {
             slots[i] = m;
+            std::cout << this->name << " equip " << m->getType() << " magic power !" << std::endl;
             break;
         }
     }
@@ -115,8 +117,11 @@ void Character::use(int idx, ICharacter& target)
 {
     if (idx >= 0 && idx < 4 && this->slots[idx])
     {
+        std::cout << this->name << " cast a spell and ";
         this->slots[idx]->use(target);
     }
+    else
+        std::cout << this->name << " can't use this !" << std::endl;
 }
 
 

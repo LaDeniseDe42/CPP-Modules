@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:29 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/18 16:20:59 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:04:34 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 class AMateria
 {
     protected:
-    //[...]
     std::string _type;
     
     public:
@@ -32,7 +31,6 @@ class AMateria
     AMateria& operator=(AMateria const & objectToCopy); //Copy assignment operator
     virtual ~AMateria() = 0; //destructor
 
-    //[...]
     std::string const & getType() const; //Returns the materia type
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
