@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/19 14:30:17 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:33:59 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ Character::Character(std::string const &name)
     {
         slots[i] = NULL;
     }
-    std::cout << "welcome in your new world : " << name << std::endl;
+    if (name == "bob")
+    {
+        std::cout << "welcome in hell \033[31m" << name << "\033[0m" << ", i will shoot you but dont worry, i can heal you too" <<std::endl;
+    }
+    else
+        std::cout << "welcome in your new world : \033[31m" << name << "\033[0m" << std::endl;
 }
 
 //destructor
@@ -90,9 +95,14 @@ void Character::equip(AMateria* m)
     {
         if (!this->slots[i])
         {
+            std::cout << "slot: " << i << std::endl;
             slots[i] = m;
-            std::cout << this->name << " equip " << m->getType() << " magic power !" << std::endl;
+            std::cout << "\033[31m" << this->name  << "\033[0m" << " equip " << m->getType() << " magic power !" << std::endl;
             break;
+        }
+        if (i == 3 && this->slots[3])
+        {
+            std::cout << "your inventory is full" << std::endl; 
         }
     }
 }
@@ -109,6 +119,7 @@ void Character::unequip(int idx)
     }
     else
     {
+        std::cout << "\033[31m" << this->name << "\033[0m" << " throw equiment on the floor .." << std::endl;
         this->slots[idx] = NULL;
     }
 }
@@ -117,11 +128,11 @@ void Character::use(int idx, ICharacter& target)
 {
     if (idx >= 0 && idx < 4 && this->slots[idx])
     {
-        std::cout << this->name << " cast a spell and ";
+        std::cout << "\033[31m" << this->name  << "\033[0m" << " cast a spell and ";
         this->slots[idx]->use(target);
     }
     else
-        std::cout << this->name << " can't use this !" << std::endl;
+        std::cout << "\033[31m" << this->name << "\033[0m" << " can't use this !" << std::endl;
 }
 
 

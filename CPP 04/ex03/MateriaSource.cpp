@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:07:49 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/19 15:24:32 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:49:35 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,21 @@ MateriaSource::~MateriaSource()
 //are not necessarily unique.
 void MateriaSource::learnMateria(AMateria* bookOfMagic)
 {
-    static int i = 0;
-    if (i > 3)
+    for (int i = 0; i < 4; i++)
     {
-        std::cout << "your brain is full, you can't learn more" << std::endl;
-        return ;
+        if (this->memory[i] == NULL && i < 4)
+        {
+            this->memory[i] = bookOfMagic;
+            std::cout << "You learn a new magic spell : \033[35m" << bookOfMagic->getType()  << "\033[0m" << std::endl;
+            return ;
+        }
+        if (i == 3)
+        {
+            delete bookOfMagic;
+            std::cout << "your brain is full, you can't learn more" << std::endl;
+            return ;
+        }
     }
-    this->memory[i] = bookOfMagic;
-    i++;
-    std::cout << "You learn a new magic spell : " << bookOfMagic->getType() << std::endl;
 }
 
 
@@ -87,13 +93,14 @@ void MateriaSource::learnMateria(AMateria* bookOfMagic)
 //the type is unknown
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-     for (int i = 0; i < 4; ++i)
+     for (int i = 0; i < 4; i++)
     {
         if (memory[i] && memory[i]->getType() == type)
         {
             std::cout << "You create a new item : " << type << std::endl;
-            return memory[i]->clone();
+            return (memory[i]->clone());
         }
+    
     }
     return 0;
 }

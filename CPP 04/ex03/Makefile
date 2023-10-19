@@ -6,7 +6,7 @@
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 11:38:07 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/19 12:29:13 by qdenizar         ###   ########.fr        #
+#    Updated: 2023/10/19 16:19:25 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
 all: $(NAME)
 
