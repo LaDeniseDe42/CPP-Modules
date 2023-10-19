@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:30:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/19 16:33:59 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:52:29 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void Character::equip(AMateria* m)
     {
         if (!this->slots[i])
         {
-            std::cout << "slot: " << i << std::endl;
             slots[i] = m;
             std::cout << "\033[31m" << this->name  << "\033[0m" << " equip " << m->getType() << " magic power !" << std::endl;
             break;
