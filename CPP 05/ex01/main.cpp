@@ -6,11 +6,14 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:50:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 17:21:05 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:04:56 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
+#include "Form.hpp"
 
 int main()
 {
@@ -43,12 +46,12 @@ int main()
         //test3.decreaseGrade();
         std::cout << test3 << std::endl;
     }
-    catch(Bureaucrat::GradeTooHighException & e)
+    catch(GradeTooHighException & e)
     {
         std::cerr << e.what() << std::endl;
         return (1);
     }
-    catch(Bureaucrat::GradeTooLowException & e)
+    catch(GradeTooLowException & e)
     {
         std::cerr << e.what() << std::endl;
         return (1);

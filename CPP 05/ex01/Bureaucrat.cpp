@@ -6,13 +6,13 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:07:16 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 17:20:54 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:30:15 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// #include "GradeTooHighException.hpp"
-// #include "GradeTooLowException.hpp"
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
 
 //CONSTRUCTEURS
 
