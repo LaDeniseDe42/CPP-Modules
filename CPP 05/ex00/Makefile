@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/16 11:38:07 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/23 15:04:48 by qdenizar         ###   ########.fr        #
+#    Created: 2023/10/23 15:01:39 by qdenizar          #+#    #+#              #
+#    Updated: 2023/10/23 15:06:05 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = AMateria
+NAME = iWantToBeABureaucrat
 
-FILES = main AMateria Ice Cure Character MateriaSource
+FILES = main Bureaucrat
 
 SRCS = $(FILES:=.cpp)
 
