@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:44:56 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/29 14:20:34 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:47:57 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ int main(void)
 	const Point c(2, -3);
 	const Point point(3, -1);
 	const Point point2(1, 6);
+	// const Point a(0, 6);
+	// const Point b(0, 2);
+	// const Point c(2, 4);
+	// const Point point(0, 3);
+	// const Point point2(1, 6);
 
 	std::cout << "Coordonate of Point A x= " << a.getX() << " and y= " << a.getY() << std::endl;
 	std::cout << "Coordonate of Point B x= " << b.getX() << " and y= " << b.getY() << std::endl;

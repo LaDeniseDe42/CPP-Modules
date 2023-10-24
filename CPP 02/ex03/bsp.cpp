@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 14:14:58 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/29 14:13:25 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:46:28 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static Fixed VectorialResult(Point const one, Point const two, Point const point
 //si les 3 resultats sont du meme signe, le point est dans le triangle
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
+    //calcul pour verifier si un des point est au meme endroit 
     if ((VectorialResult(a, b, point) >= 0
     && VectorialResult(b, c, point) >= 0
     && VectorialResult(c, a , point) >= 0)
@@ -36,8 +37,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     || (point.getX() == b.getX() && point.getY() == b.getY())
     || (point.getX() == c.getX() && point.getY() == c.getY()))
         {
-            //std::cout << "The coordinate of the searched point is the same as that of one of the vertices of the triangle" << std::endl;
             return (false);
+        }
+    //calcul pour verifier si le point est sur une des droites du triangle
+    if (VectorialResult(a, b, point) == 0 || VectorialResult(b, c, point) == 0 || VectorialResult(c, a, point) == 0)
+        {
+            return false;
         }
      return (true);
     }

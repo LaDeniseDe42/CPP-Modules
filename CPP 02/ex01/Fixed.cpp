@@ -6,45 +6,59 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:06:56 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/27 10:29:32 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:02:28 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+
+//Pour effectuer correctement la conversion en un nombre à virgule flottante,
+//il est nécessaire de diviser le nombre à virgule fixe par une valeur qui
+//représente le poids des bits fractionnaires.
+//Cette valeur est déterminée par une puissance de 2 en fonction de la quantité de bits fractionnaires.
+
 //convertis un nombre a virgule fixe en float
 float	Fixed::toFloat( void ) const
 {
+	//1 << stockNumber.. permet de calculer la valeur de puissance de 2
+	// en fonction de la quantité de bits de stockFixed
 	return ((float)(stockFixedPointNumber / (float)(1 << stockNumberOfFractionalBits)));
 }
 
-//convertis un nombre a virgule fixe en int
+//convertis un nombre fixe en int
+//supprime les bits réservés pour la partie fractionnaire
+//du nombre et conserve uniquement la partie entière.
 int		Fixed::toInt( void ) const
 {
 	return (stockFixedPointNumber >> stockNumberOfFractionalBits);
 }
 
-//Affiche sur la sortie OS l'objet Fixed en float
+//Affiche sur la sortie OS(sortie standard) l'objet Fixed en float
 std::ostream&	operator<<(std::ostream& os, const Fixed& objet)
 {
 	return (os << objet.toFloat());
 
 }
 
-//that converts the fixed-point value to a floating-point value
+//convertit l'entier en une représentation à virgule fixe
+//en le décalant vers la gauche par le nombre de bits fractionnaires
 Fixed::Fixed(const int obj)
 {
 	std::cout << "Int constructor called" << std::endl;
 	stockFixedPointNumber = obj << stockNumberOfFractionalBits;
 }
 
-//that converts the fixed-point value to an integer value.
+//convertit le nombre à virgule flottante en une représentation à virgule fixe
 Fixed::Fixed(const float obj)
 {
 	std::cout << "Float constructor called" << std::endl;
+	// roundf() permet d'arrondir un nombre à virgule flottante vers l'entier l plus proche
 	stockFixedPointNumber = roundf((1 << stockNumberOfFractionalBits) * obj);
 }
 
+
+//default constructor
 Fixed::Fixed() :stockFixedPointNumber(0)
 {
 	std::cout << "default constructor called" << std::endl;

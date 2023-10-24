@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:44:04 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/02 16:19:31 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:45:38 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ Fixed::Fixed(const Fixed&	newFixed)
 
 bool Fixed::operator>(Fixed const & objectToCompare) const
 {
-	if (objectToCompare.stockFixedPointNumber > stockFixedPointNumber)
+	if ( stockFixedPointNumber > objectToCompare.stockFixedPointNumber)
 	{
 		return (true);
 	}
@@ -55,7 +55,7 @@ bool Fixed::operator>(Fixed const & objectToCompare) const
 
 bool Fixed::operator<(Fixed const & objectToCompare) const
 {
-	if (objectToCompare.stockFixedPointNumber < stockFixedPointNumber)
+	if ( stockFixedPointNumber < objectToCompare.stockFixedPointNumber )
 	{
 		return (true);
 	}
@@ -64,7 +64,7 @@ bool Fixed::operator<(Fixed const & objectToCompare) const
 
 bool Fixed::operator>=(Fixed const & objectToCompare) const
 {
-	if (objectToCompare.stockFixedPointNumber >= stockFixedPointNumber)
+	if ( stockFixedPointNumber >= objectToCompare.stockFixedPointNumber)
 	{
 		return (true);
 	}
@@ -73,7 +73,7 @@ bool Fixed::operator>=(Fixed const & objectToCompare) const
 
 bool Fixed::operator<=(Fixed const & objectToCompare) const
 {
-	if (objectToCompare.stockFixedPointNumber <= stockFixedPointNumber)
+	if ( stockFixedPointNumber <= objectToCompare.stockFixedPointNumber)
 	{
 		return (true);
 	}
@@ -151,13 +151,10 @@ Fixed	Fixed::operator--(int)
 
 Fixed& Fixed::operator=(Fixed const & objectToCopy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &objectToCopy)
 	{
-		this->Name = objectToCopy.Name;
-		this->Name = objectToCopy.Name;
-		this->Name = objectToCopy.Name;
-		this->Name = objectToCopy.Name;
+		this->stockFixedPointNumber = objectToCopy.stockFixedPointNumber;
 	}
 	return (*this);
 }
@@ -180,12 +177,12 @@ Fixed&	Fixed::min(Fixed& a, Fixed& b)
 // Surcharge de la fonction membre statique min pour les références constantes
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
 {
-	return ((a < b) ? a : b);
+	return ((a.stockFixedPointNumber < b.stockFixedPointNumber) ? a : b);
 }
 // Surcharge de la fonction membre statique max pour les références modifiables
 Fixed&	Fixed::max(Fixed& a, Fixed& b)
 {
-	return ((a > b) ? a : b);
+	return ((a.stockFixedPointNumber > b.stockFixedPointNumber) ? a : b);
 }
 
 // Surcharge de la fonction membre statique max pour les références constantes

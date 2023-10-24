@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:44:25 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/09/28 11:46:11 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:09:02 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ public:
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw);
 
-	static	Fixed&	min(Fixed& a, Fixed& b);
-	static	const Fixed&	min(const Fixed& a, const Fixed& b);
-	static	Fixed&	max(Fixed& a, Fixed& b);
-	static	const Fixed&	max(const Fixed& a, const Fixed& b);
+	static	Fixed& min(Fixed& a, Fixed& b);
+	static	const Fixed& min(const Fixed& a, const Fixed& b);
+	static	Fixed& max(Fixed& a, Fixed& b);
+	static	const Fixed& max(const Fixed& a, const Fixed& b);
 
 	Fixed&  operator=(Fixed const & objectToCopy);
 	bool	operator>(Fixed const & objectToCompare) const;
