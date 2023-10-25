@@ -6,55 +6,49 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:50:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 16:04:56 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:10:42 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 #include "Form.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat test("Jean-Bon", 1);
-        std::cout << test;
-        test.decreaseGrade();
-        test.decreaseGrade();
-        test.promoteGrade();
-        test.promoteGrade();
-        //test.promoteGrade();
-        std::cout << test << std::endl;
+        Bureaucrat emperor("Palpatine", 1);
+        std::cout << emperor;
+        Form kill_the_jedi("66_Order", 1, 1);
+        std::cout << kill_the_jedi;
+        kill_the_jedi.beSigned(emperor);
+        emperor.signForm(kill_the_jedi);
+
+        std::cout << std::endl;
         
-        Bureaucrat test2("Jean-Pas-Bon", 130);
-        std::cout << test2;
-        test2.decreaseGrade();
-        test2.decreaseGrade();
-        test2.decreaseGrade();
-        test2.decreaseGrade();
-        test2.decreaseGrade();
-        std::cout << test2 << std::endl;
+        Bureaucrat blackHole("Jeannai Plupourlong", 130);
+        std::cout << blackHole;
+        Form phenix("INeedMoreTime", 10, 129);
+        std::cout << phenix;
+        phenix.beSigned(blackHole);
+        blackHole.signForm(phenix);
+        blackHole.promoteGrade();
+        std::cout << blackHole;
+        phenix.beSigned(blackHole);
+        blackHole.signForm(phenix);
         
-        
-        Bureaucrat test3("Jean_Pas_Bon_Non_Plus", 149);
-        std::cout << test3;
-        test3.promoteGrade();
-        test3.decreaseGrade();
-        test3.decreaseGrade();
-        //test3.decreaseGrade();
-        std::cout << test3 << std::endl;
     }
-    catch(GradeTooHighException & e)
+    catch(Bureaucrat::GradeTooHighException & e)
     {
         std::cerr << e.what() << std::endl;
-        return (1);
     }
-    catch(GradeTooLowException & e)
+    catch(Bureaucrat::GradeTooLowException & e)
     {
         std::cerr << e.what() << std::endl;
-        return (1);
+    }
+    catch(Form::GradeTooLowException & e)
+    {
+        std::cerr << e.what() << std::endl;
     }
     return (0);
 }

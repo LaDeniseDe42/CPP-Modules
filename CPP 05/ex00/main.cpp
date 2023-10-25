@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:50:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 17:21:05 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:40:52 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
         //test.promoteGrade();
         std::cout << test << std::endl;
         
-        Bureaucrat test2("Jean-Pas-Bon", 130);
+        Bureaucrat test2("Jean-Pas-Tres-Bon", 130);
         std::cout << test2;
         test2.decreaseGrade();
         test2.decreaseGrade();

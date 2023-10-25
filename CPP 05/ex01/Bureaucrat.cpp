@@ -6,13 +6,13 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:07:16 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 14:30:15 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:33:39 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
+#include "Form.hpp"
+
 
 //CONSTRUCTEURS
 
@@ -96,6 +96,20 @@ void    Bureaucrat::decreaseGrade()
 	}
 	else
 		this->grade++;
+}
+
+
+void	Bureaucrat::signForm(Form formToCheck)
+{
+	if (formToCheck.getSignOrNot() == true)
+	{
+		std::cout << getName() << " signed " << formToCheck.getName() << std::endl;
+	}
+	else
+	{
+		std::cout << getName() << " couldn't signed " << formToCheck.getName();
+		std::cout << " because is grade is too low.." <<  std::endl;
+	}
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& objet)

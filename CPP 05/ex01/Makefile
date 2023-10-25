@@ -6,13 +6,13 @@
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:01:39 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/23 15:06:05 by qdenizar         ###   ########.fr        #
+#    Updated: 2023/10/25 14:02:22 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = iWantToBeABureaucrat
 
-FILES = main Bureaucrat
+FILES = main Bureaucrat Form
 
 SRCS = $(FILES:=.cpp)
 
