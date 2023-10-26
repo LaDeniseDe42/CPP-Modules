@@ -6,13 +6,13 @@
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:01:39 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/26 11:28:28 by qdenizar         ###   ########.fr        #
+#    Updated: 2023/10/26 16:37:02 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = iWantToBeABureaucrat
 
-FILES = main Bureaucrat AForm ShrubberyCreationForm
+FILES = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm
 
 SRCS = $(FILES:=.cpp)
 

@@ -6,11 +6,14 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:59:53 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/26 16:06:33 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:43:03 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include   "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
 
 //CONSTRUCTEURS
 
@@ -63,6 +66,18 @@ void    RobotomyRequestForm::execute(Bureaucrat const & executor) const
     }
     else
     {
-        
+        std::srand(std::time(0));
+        int random = std::rand();
+        if (random < RAND_MAX / 2)
+        {
+            std::cout << "Bzzzz... Clang!... Whirrr... Lobotomy noises... Beep! Beep!" << std::endl;
+            std::cout << this->target << " has been robotomized successfully !" << std::endl;
+        }
+        else
+        {
+            std::cout << executor.getName() << " ??? What are you doing with this Rhum bottle ?" << std::endl;
+            std::cout << "Bzzzz... Clang!... Whirrr... Lobotomy noises... Beep! Beep!" << std::endl;
+            std::cout << " Oh nooo :( "<< this->target << " is dead during operation... Who's next ?!" << std::endl;
+        }      
     }     
 }

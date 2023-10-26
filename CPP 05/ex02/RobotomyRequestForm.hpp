@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:59:31 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/26 16:02:31 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:15:08 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
