@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:07:29 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/24 17:12:08 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:30:26 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class Bureaucrat
             public:
             virtual const char* what() const throw()
             {
-                return ("\033[35mERROR :\033[0m The grade is too HIGHT" );
+                return ("\033[35mERROR :\033[0m The grade is too HIGH" );
             }
         };
 };

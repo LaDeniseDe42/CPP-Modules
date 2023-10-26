@@ -6,12 +6,12 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:07:16 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/26 10:22:32 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:44:11 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 
 //CONSTRUCTEURS
@@ -99,7 +99,7 @@ void    Bureaucrat::decreaseGrade()
 }
 
 
-void	Bureaucrat::signForm(Form & formToCheck)
+void	Bureaucrat::signForm(AForm & formToCheck)
 {
 	try
 	{
@@ -114,6 +114,22 @@ void	Bureaucrat::signForm(Form & formToCheck)
 		std::cout << "\033[41m" << getName() << " couldn't signed " << formToCheck.getName();
 		std::cout << " because is grade is too low.." << "\033[00m" << std::endl;
 		std::cerr << e.what() << '\n';
+	}
+	
+}
+
+
+void    Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << "\033[42m" << this->getName() << " executed " << form.getName() << "\033[00m"<< std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "\033[41m" << this->getName() << " can't execute " << form.getName() << "\033[00m"<< std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	
 }

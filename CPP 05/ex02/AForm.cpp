@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:04:05 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/26 10:56:18 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:57:12 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 
 //CONSTRUCTEURS
 
 //default
-Form::Form() : name("Unknown"), signOrNot(false), requiredGradeToSign(1), requiredGradeToExecute(10)
+AForm::AForm() : name("Unknown"), signOrNot(false), requiredGradeToSign(1), requiredGradeToExecute(10)
 {
-	std::cout << "\033[33mForm default constructor called \033[0m " << std::endl;
+	std::cout << "\033[33mAForm default constructor called \033[0m " << std::endl;
 }
 
 //cpy constructor
-Form::Form(const Form&	newForm) : name(newForm.name), signOrNot(false), requiredGradeToSign(1), requiredGradeToExecute(10)
+AForm::AForm(const AForm&	newAForm) : name(newAForm.name), signOrNot(false), requiredGradeToSign(1), requiredGradeToExecute(10)
 { 
-	std::cout << "\033[33mForm Copy constructor called\033[0m " << std::endl;
-	*this = newForm;
+	std::cout << "\033[33mAForm Copy constructor called\033[0m " << std::endl;
+	*this = newAForm;
 }
 
 //Copy assignment operator
-Form& Form::operator=(Form const & objectToCopy)
+AForm& AForm::operator=(AForm const & objectToCopy)
 {
-	std::cout << "\033[33mForm Copy assignment operator called\033[0m " << std::endl;
+	std::cout << "\033[33mAForm Copy assignment operator called\033[0m " << std::endl;
 	if (this != &objectToCopy)
 	{
         this->signOrNot = objectToCopy.signOrNot;
@@ -39,9 +39,9 @@ Form& Form::operator=(Form const & objectToCopy)
 	return (*this);
 }
 
-Form::Form(const std::string Name, const int RGE, const int RGS) : name(Name) , requiredGradeToSign(RGS), requiredGradeToExecute(RGE)
+AForm::AForm(const std::string Name, const int RGE, const int RGS) : name(Name) , requiredGradeToSign(RGS), requiredGradeToExecute(RGE)
 {
-    std::cout << "\033[33mForm with name and levels called\033[0m " << std::endl;
+    std::cout << "\033[33mAForm with name and levels called\033[0m " << std::endl;
    		if (requiredGradeToExecute < 1 || requiredGradeToSign < 1)
 		{
 			throw GradeTooHighException();
@@ -50,17 +50,16 @@ Form::Form(const std::string Name, const int RGE, const int RGS) : name(Name) , 
 		{
 			throw GradeTooLowException();
 		}	
-	
-}
+} 
 
 				//FUNCTIONS
 
-    const std::string	Form::getName() const
+    const std::string	AForm::getName() const
 	{
 		return(this->name);
 	}
 	
-    bool	Form::getSignOrNot() const
+    bool	AForm::getSignOrNot() const
 	{
 		if (signOrNot == true)
 			return(true);
@@ -68,21 +67,22 @@ Form::Form(const std::string Name, const int RGE, const int RGS) : name(Name) , 
 			return(false);
 	}
 	
-    int	Form::getGradeToSign() const
+    int	AForm::getGradeToSign() const
 	{
 		return (this->requiredGradeToSign);
 	}
 
-    int	Form::getGradeToExecute() const
+    int	AForm::getGradeToExecute() const
 	{
 		return (this->requiredGradeToExecute);
 	}
 
 
-	void	Form::beSigned(Bureaucrat  & theWorkingBureaucrat)
+	void	AForm::beSigned(Bureaucrat  & theWorkingBureaucrat)
 	{
 		if (theWorkingBureaucrat.getGrade() > getGradeToSign())
 		{
+			std::cout << "\033[34m" << "This form dont have any signature" << "\033[00m" <<std::endl;
 			throw GradeTooLowException();
 		}
 		else
@@ -93,7 +93,7 @@ Form::Form(const std::string Name, const int RGE, const int RGS) : name(Name) , 
 	}
 
 
-std::ostream&	operator<<(std::ostream& os, const Form& objet)
+std::ostream&	operator<<(std::ostream& os, const AForm& objet)
 {
 	os << "\033[34m" << objet.getName() << " can be signed with level : " << objet.getGradeToSign();
 	os << " and can be execute with level : " << objet.getGradeToExecute() << "\033[00m" << std::endl;
@@ -101,7 +101,7 @@ std::ostream&	operator<<(std::ostream& os, const Form& objet)
 }
 
 //destructor
-Form::~Form()
+AForm::~AForm()
 {
-	std::cout << "Hey you i'm \033[36mForm\033[0m destructor" << std::endl;
+	std::cout << "Hey you i'm \033[36mAForm\033[0m destructor" << std::endl;
 }
