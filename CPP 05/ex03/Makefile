@@ -6,13 +6,13 @@
 #    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:01:39 by qdenizar          #+#    #+#              #
-#    Updated: 2023/10/27 09:18:20 by root             ###   ########.fr        #
+#    Updated: 2023/10/27 10:46:57 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = iWantToBeABureaucrat
 
-FILES = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm
+FILES = main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm Intern
 
 SRCS = $(FILES:=.cpp)
 

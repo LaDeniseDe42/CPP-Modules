@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:50:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/26 16:36:36 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:30:54 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -21,10 +22,12 @@ int main()
     {
         Bureaucrat emperor("Palpatine", 1);
         std::cout << emperor;
-        AForm* kill_the_jedi = new ShrubberyCreationForm("42_Mulhouse");
+        AForm* kill_the_jedi = new ShrubberyCreationForm("Endor");
         std::cout << *kill_the_jedi;
         emperor.signForm(*kill_the_jedi);
         emperor.executeForm(*kill_the_jedi);
+
+        std::cout << std::endl;
         
         Bureaucrat Sadic("Docteur UneChanceSurDeux", 1);
         std::cout << Sadic;
@@ -34,10 +37,18 @@ int main()
         Sadic.executeForm(*pileOuFace);
 
         std::cout << std::endl;
+
+        Bureaucrat president("Cornelius Fudge", 1);
+        std::cout << president;
+        AForm* pardon = new PresidentialPardonForm("Lucius Malefoy");
+        std::cout << *pardon;
+        president.signForm(*pardon);
+        president.executeForm(*pardon);
         
-        
+        std::cout << std::endl;
         delete kill_the_jedi;
         delete pileOuFace;
+        delete pardon;
     }
     catch(Bureaucrat::GradeTooHighException & e)
     {
