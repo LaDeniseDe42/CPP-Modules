@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:18:18 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/04 15:15:56 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:20:38 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int main(int argc, char **argv)
     a.beRepaired(12);
     std::cout << a.getName() << " have " << a.getIntValue("EnergyPoints") << " energy";
     std::cout << " and "  << a.getIntValue("HitPoints") << " HP." << std::endl;
- 
-
+    
     std::cout << std::endl;
     return (0);
 }

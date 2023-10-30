@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:29:01 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/04 15:07:42 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:16:58 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ FragTrap& FragTrap::operator=(FragTrap const & objectToCopy)
 FragTrap::~FragTrap()
 {
     std::cout << "\033[32mI'm the FragTrap destructor and i'm coming for you " << getName() << "\033[0m" << std::endl;
+}
+
+
+void FragTrap::attack(const std::string& target)
+{
+	if (getIntValue("EnergyPoints") == 0)
+	{
+		std::cout << getName() << " is to tired for a fight" << std::endl;
+	}
+	else if (getIntValue("HitPoints") == 0)
+	{
+		std::cout << getName() << " is DEAD and Dead cant attack" << std::endl;
+	}
+	else
+	{
+		std::cout << getName() << " \033[31m attack \033[0m " << target << " and causing \033[34;4m" << getIntValue("AttackDamage");
+		std::cout << "\033[0m Frag points of damage!" << std::endl;	
+	}
+	this->EnergyPoints--;
 }
 
 void FragTrap::highFivesGuys(void)

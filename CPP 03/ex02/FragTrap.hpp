@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:28:41 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/04 15:10:09 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:15:41 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class FragTrap : public ClapTrap
     
     void highFivesGuys(void);
     void beRepaired(unsigned int amount);
+    void attack(const std::string& target);
 };
 
 #endif

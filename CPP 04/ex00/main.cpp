@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:39:53 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/05 13:22:12 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:29:09 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main()
     std::cout << "\033[35m" << wrong2->getType() << " \033[0m" << std::endl;
     wrong2->makeSound();//wrongCat
 
-
+    std::cout << std::endl;
     delete  wrong;
      std::cout << std::endl;
     delete  wrong2;

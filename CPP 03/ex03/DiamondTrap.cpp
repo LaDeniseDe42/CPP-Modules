@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:17 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/04 14:26:51 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:16:31 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ DiamondTrap::DiamondTrap()
 	std::cout << "\033[32mDiamondTrap default constructor called\033[0m" << std::endl;
     this->Name = "Default";
     ClapTrap::Name = Name + "_clap_name";
-    this->FragTrap::HitPoints = FragTrap::HitPoints;
-    this->ScavTrap::EnergyPoints = ScavTrap::EnergyPoints;
-    this->FragTrap::AttackDamage = FragTrap::AttackDamage;
+    this->AttackDamage = 30;
+    this->HitPoints = 100;
+    this->EnergyPoints = 50;
 }
 
 //constructor with string
@@ -32,9 +32,9 @@ DiamondTrap::DiamondTrap(std::string Name)
     std::cout << "\033[32mDiamondTrap constructor with name called\033[0m " << std::endl;
 	ClapTrap::Name = Name + "_clap_name";
     this->Name = Name;
-    this->FragTrap::HitPoints = FragTrap::HitPoints;
-    this->ScavTrap::EnergyPoints = ScavTrap::EnergyPoints;
-    this->FragTrap::AttackDamage = FragTrap::AttackDamage;
+    this->AttackDamage = 30;
+    this->HitPoints = 100;
+    this->EnergyPoints = 50;
 
 }
 
