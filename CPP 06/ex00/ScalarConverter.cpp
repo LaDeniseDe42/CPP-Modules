@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/03 15:13:41 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:45:13 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,10 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const & objectToCopy
 
 static bool isAChar(const std::string& input)
 {
-        if (input.length() == 3 && ((input[0] == '\'' && input[2] == '\'') || (input[0] == '"' && input[2] == '"')))
-        {
-            if (isprint(input[1]))
-                return true;
-            else
-            {
-                std::cout << "Middle character is not printable." << std::endl;
-                return false;
-            }
-        } else {
-            return false;
-        }
+    if (std::isprint(input[0]) && !std::isdigit(input[0]) && input.length() == 1)
+        return true;
+    else
+        return false;
 }
 
     static bool isAInt(const std::string& input)
@@ -73,7 +65,7 @@ static bool isAChar(const std::string& input)
         if (input[0] == '+' || input[0] == '-') start = 1;
         for (size_t i = start; i < input.length(); ++i)
         {
-            if (!isdigit(input[i]))
+            if (!std::isdigit(input[i]))
                 return false;
         }
         return true;
