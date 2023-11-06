@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:29:20 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/03 13:52:21 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:37:20 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <stdlib.h>
+#include <limits>
 
 class ScalarConverter
 {

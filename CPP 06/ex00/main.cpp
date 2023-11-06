@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:35 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/03 14:50:57 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:33:35 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <limits>
 
 int main(int argc, char **argv)
 {
