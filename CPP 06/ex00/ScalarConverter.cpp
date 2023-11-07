@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/07 14:42:48 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:37:39 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ static bool isAInt(const std::string& input)
 
 static bool isAFloat(const std::string& input)
 {
+    int verif = 0;
+    while (input[verif])
+    {
+        if (input[verif] == 'f')
+        {
+            if (input[verif + 1])
+                return false;
+        }
+        verif++;
+    }
     size_t start = 0;
     if (input[0] == '+' || input[0] == '-')
         start = 1;
@@ -97,6 +107,13 @@ static bool isAFloat(const std::string& input)
 
 static bool isADouble(const std::string& input)
 {
+    int f = 0;
+    while (input[f])
+    {
+        if (input[f] == 'f')
+            return false;
+        f++;
+    }
     size_t start = 0;
     if (input[0] == '+' || input[0] == '-') start = 1;
     bool foundDot = false;
@@ -116,6 +133,54 @@ static bool isADouble(const std::string& input)
             return false;
     }
     return foundDot;
+}
+
+static void minff()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: -inff" << std::endl;
+    std::cout << "double: -inf" << std::endl;
+}
+
+static void inff()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: +inff" << std::endl;
+    std::cout << "double: +inf" << std::endl;
+}
+
+static void nanf()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: nanf" << std::endl;
+    std::cout << "double: nan" << std::endl;
+}
+
+static void minf()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: -inff" << std::endl;
+    std::cout << "double: -inf" << std::endl;
+}
+
+static void inf()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: +inff" << std::endl;
+    std::cout << "double: +inf" << std::endl;
+}
+
+static void nan()
+{
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: nanf" << std::endl;
+    std::cout << "double: nan" << std::endl;
 }
 
 static bool needZeroF(std::string f, int isFloat)
@@ -179,9 +244,9 @@ static void convertCharToOtherTypes(const std::string& input)
     int i = static_cast<int>(c);
     float f = static_cast<float>(c);
     double d = static_cast<double>(c);
-    std::cout << "char: " << c << std::endl;
+    std::cout << "char: '" << c << "'" << std::endl;
     std::cout << "int: " << i << std::endl;
-     if (needZeroF(input, 0) == true)
+    if (needZeroF(input, 0) == true)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
         std::cout << "float: " << f << "f" << std::endl;
@@ -198,14 +263,16 @@ static void convertIntToOtherTypes(const std::string& input)
     bool intmax = false;
     int inputValue = std::atoi(input.c_str());
     std::cout << "inputValue = " << inputValue << std::endl;
-    if (inputValue == 2147483647  && inputValue == -2147483648)
+    if (inputValue == 2147483647  || inputValue == -2147483648)
        intmax = true;
     int i = inputValue;
     char cara = static_cast<char>(i);
-    if (isprint(cara) == false)
+    if (isprint(cara) == false && !(inputValue >= 0 && inputValue <= 127))
         std::cout << "char: impossible" << std::endl;
+    else if((inputValue >= 0 && inputValue <= 31) || inputValue == 127)
+        std::cout << "char: Non displayable" << std::endl;
     else
-        std::cout << "char: " << cara << std::endl;
+        std::cout << "char: '" << cara << "'" << std::endl;
     if (intmax == true)
     {
         std::cout << "int: impossible" << std::endl;
@@ -229,19 +296,28 @@ static void convertIntToOtherTypes(const std::string& input)
 
 static void convertDoubleToOtherTypes(const std::string& input)
 {
-    double d = std::atof(input.c_str());
+    double d = std::strtod(input.c_str(), 0);
     char c = static_cast<char>(d);
-    if (isprint(c) == false)
+    if (isprint(c) == false && !(d >= 0 && d <= 127))
         std::cout << "char: impossible" << std::endl;
+    else if((d >= 0 && d <= 31) || d == 127)
+        std::cout << "char: Non displayable" << std::endl;
     else
-        std::cout << "char: " << c << std::endl;
+        std::cout << "char: '" << c << "'" << std::endl;
     int i = static_cast<int>(d);
     float f = static_cast<float>(d);
     std::cout << "int: " << i << std::endl;
     if (needZeroF(input,0) == true)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
+    {
+        if (f == i )
+        {
+            std::cout << std::fixed;
+            std::cout.precision(1);
+        }
         std::cout << "float: " << f << "f" << std::endl;
+    }
     if (d == i)
     {
         std::cout << std::fixed;
@@ -253,13 +329,14 @@ static void convertDoubleToOtherTypes(const std::string& input)
 static void convertFloatToOtherTypes(const std::string& input)
 {
     float f = std::strtof(input.c_str(), NULL);
-    std::cout << "f = " << f << std::endl;
     int i = static_cast<int>(f);
     char c = static_cast<char>(f);
-    if (isprint(c) == false )
+    if (isprint(c) == false && !(i >= 0 && i <= 127))
         std::cout << "char: impossible" << std::endl;
+    else if((i >= 0 && i <= 31) || i == 127)
+        std::cout << "char: Non displayable" << std::endl;
     else
-        std::cout << "char: " << c << std::endl;
+        std::cout << "char: '" << c << "'" << std::endl;
     double d = static_cast<double>(f);
     std::cout << "int: " << i << std::endl;
     if (needZeroF(input,1) == true)
@@ -297,6 +374,18 @@ void ScalarConverter::convert(const std::string& stringToConvert)
         std::cout << "is float" << std::endl;
         convertFloatToOtherTypes(stringToConvert);
     }
+    else if (stringToConvert == "-inff")
+        minff();
+    else if (stringToConvert == "+inff")
+        inff();
+    else if (stringToConvert == "nanf")
+        nanf();
+    else if (stringToConvert == "-inf")
+        minf();
+    else if (stringToConvert == "+inf")
+        inf();
+    else if (stringToConvert == "nan")
+        nan();
     else
         std::cout << "Invalid stringToConvert." << std::endl;
 }
