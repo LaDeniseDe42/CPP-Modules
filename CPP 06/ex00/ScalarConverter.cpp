@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/06 15:35:51 by root             ###   ########.fr       */
+/*   Updated: 2023/11/07 14:42:48 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static bool isAChar(const std::string& input)
 
 static bool isAInt(const std::string& input)
 {
+    if (!input[0])
+        return false;
     size_t start = 0;
     if (input[0] == '+' || input[0] == '-') start = 1;
     for (size_t i = start; i < input.length(); ++i)
@@ -81,6 +83,10 @@ static bool isAFloat(const std::string& input)
         {
             if (foundDot)
                 return false;
+            if (input[i +1] && ((input[i + 1] >= '0' && input[i + 1] <= '9') || input[i + 1] == 'f')) 
+                return true;
+            else
+                return false;
             foundDot = true;
         }
         else if (!isdigit(input[i]) && input[i] != 'f')
@@ -98,7 +104,12 @@ static bool isADouble(const std::string& input)
     {
         if (input[i] == '.')
         {
-            if (foundDot) return false;
+            if (foundDot)
+                return false;
+            if (input[i +1] && (input[i + 1] >= '0' && input[i + 1] <= '9')) 
+                return true;
+            else
+                return false;
             foundDot = true;
         }
         else if (!isdigit(input[i]))
@@ -111,30 +122,54 @@ static bool needZeroF(std::string f, int isFloat)
 {
     if (isFloat == 1)
     {
-    int i = 0;
-    while (f[i] != '.')
-        i++;
-    while (f[++i] != 'f')
-    {
-        if (f[i] != '0')
-        {
-            return false;
-        }
-    }
-    return (true);
-    }
-    else{
         int i = 0;
-    while (f[i] != '.')
-        i++;
-    while (f[++i])
-    {
-        if (f[i] != '0')
+        while (f[i] && f[i] != '.')
+            i++;
+        int nb_zero = 0;
+        while ( f[i] && f[++i] != 'f')
         {
-            return false;
+            nb_zero++;
+            if (nb_zero > 3)
+            {
+                if (f[i +1] && f[i + 1] > '5')
+                    return false;
+                else
+                    return true;
+            }
+            if (f[i] != '0')
+            {
+                if (nb_zero > 3)
+                    return true;
+                return false;
+            }
         }
+        return (true);
     }
-    return (true);
+    else
+    {
+        int point = 0;
+        while (f[point] && f[point] != '.')
+            point++;
+        int i = point;
+        int nb_zero = 0;
+        while (f[i] && f[++i])
+        {
+            nb_zero++;
+            if (nb_zero > 3)
+            {
+                if (f[i +1] && f[i + 1] > '5')
+                    return false;
+                else
+                    return true;
+            }
+            if (f[i] != '0')
+            {
+                if (nb_zero > 3)
+                    return true;
+                return false;
+            }
+        }
+        return (true);
     }    
 }
 
@@ -150,7 +185,12 @@ static void convertCharToOtherTypes(const std::string& input)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
         std::cout << "float: " << f << "f" << std::endl;
-    std::cout << "double: " << d << ".0" << std::endl;
+    if (d == i)
+    {
+        std::cout << std::fixed;
+        std::cout.precision(1);
+    }
+    std::cout << "double: " << d << std::endl;
 }
 
 static void convertIntToOtherTypes(const std::string& input)
@@ -172,14 +212,18 @@ static void convertIntToOtherTypes(const std::string& input)
     }
     else
         std::cout << "int: " << i << std::endl;
-    float f = static_cast<float>(i);  
+    float f = static_cast<float>(i); 
     if (needZeroF(input,0) == true)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
         std::cout << "float: " << f << "f" << std::endl;
-    
     double d = static_cast<double>(i);
-    std::cout << "double: " << d << ".0" << std::endl;
+    if (d == i)
+    {
+        std::cout << std::fixed;
+        std::cout.precision(1);
+    }
+    std::cout << "double: " << d << std::endl;
 }
 
 
@@ -198,6 +242,11 @@ static void convertDoubleToOtherTypes(const std::string& input)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
         std::cout << "float: " << f << "f" << std::endl;
+    if (d == i)
+    {
+        std::cout << std::fixed;
+        std::cout.precision(1);
+    }
     std::cout << "double: " << d << std::endl;
 }
 
@@ -217,6 +266,11 @@ static void convertFloatToOtherTypes(const std::string& input)
         std::cout << "float: " << f << ".0f" << std::endl;
     else
         std::cout << "float: " << f << "f" << std::endl;
+    if (d == i)
+    {
+        std::cout << std::fixed;
+        std::cout.precision(1);
+    }
     std::cout << "double: " << d << std::endl;
 }
 
