@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/07 16:37:39 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:13:54 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static bool isAInt(const std::string& input)
 {
     if (!input[0])
         return false;
+    if (input.length() > 11)
+        return false;
     size_t start = 0;
     if (input[0] == '+' || input[0] == '-') start = 1;
     for (size_t i = start; i < input.length(); ++i)
@@ -79,6 +81,8 @@ static bool isAFloat(const std::string& input)
         if (input[verif] == 'f')
         {
             if (input[verif + 1])
+                return false;
+            if (input[verif - 1] == '.')
                 return false;
         }
         verif++;
@@ -193,7 +197,8 @@ static bool needZeroF(std::string f, int isFloat)
         int nb_zero = 0;
         while ( f[i] && f[++i] != 'f')
         {
-            nb_zero++;
+            while (f[i] == '0')
+                nb_zero++;
             if (nb_zero > 3)
             {
                 if (f[i +1] && f[i + 1] > '5')
@@ -261,13 +266,12 @@ static void convertCharToOtherTypes(const std::string& input)
 static void convertIntToOtherTypes(const std::string& input)
 {
     bool intmax = false;
-    int inputValue = std::atoi(input.c_str());
-    std::cout << "inputValue = " << inputValue << std::endl;
-    if (inputValue == 2147483647  || inputValue == -2147483648)
-       intmax = true;
-    int i = inputValue;
+    long long int inputValue = std::atoll(input.c_str());
+    if (inputValue > 2147483647  || inputValue < -2147483648)
+       intmax = true;  
+    long long int i = inputValue;
     char cara = static_cast<char>(i);
-    if (isprint(cara) == false && !(inputValue >= 0 && inputValue <= 127))
+    if (isprint(cara) == false || !(inputValue >= 0 && inputValue <= 127) || (inputValue > 127))
         std::cout << "char: impossible" << std::endl;
     else if((inputValue >= 0 && inputValue <= 31) || inputValue == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -279,17 +283,11 @@ static void convertIntToOtherTypes(const std::string& input)
     }
     else
         std::cout << "int: " << i << std::endl;
-    float f = static_cast<float>(i); 
-    if (needZeroF(input,0) == true)
-        std::cout << "float: " << f << ".0f" << std::endl;
-    else
-        std::cout << "float: " << f << "f" << std::endl;
+    float f = static_cast<float>(i);
+    std::cout << std::fixed;
+    std::cout.precision(1);
+    std::cout << "float: " << f << "f" << std::endl;
     double d = static_cast<double>(i);
-    if (d == i)
-    {
-        std::cout << std::fixed;
-        std::cout.precision(1);
-    }
     std::cout << "double: " << d << std::endl;
 }
 
@@ -298,7 +296,7 @@ static void convertDoubleToOtherTypes(const std::string& input)
 {
     double d = std::strtod(input.c_str(), 0);
     char c = static_cast<char>(d);
-    if (isprint(c) == false && !(d >= 0 && d <= 127))
+    if (isprint(c) == false || !(d >= 0 && d <= 127) || (d > 127))
         std::cout << "char: impossible" << std::endl;
     else if((d >= 0 && d <= 31) || d == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -307,23 +305,29 @@ static void convertDoubleToOtherTypes(const std::string& input)
     int i = static_cast<int>(d);
     float f = static_cast<float>(d);
     std::cout << "int: " << i << std::endl;
-    if (needZeroF(input,0) == true)
-        std::cout << "float: " << f << ".0f" << std::endl;
-    else
+    if (f == i)
     {
-        if (f == i )
-        {
-            std::cout << std::fixed;
-            std::cout.precision(1);
-        }
-        std::cout << "float: " << f << "f" << std::endl;
+        std::cout << std::fixed;
+        std::cout.precision(1);
     }
+        std::cout << "float: " << f << "f" << std::endl;
     if (d == i)
     {
         std::cout << std::fixed;
         std::cout.precision(1);
     }
-    std::cout << "double: " << d << std::endl;
+    int nb_before_dot = 0;
+    int begin_with_zero = 0;
+    while (input[nb_before_dot] && input[nb_before_dot] != '.')
+    {
+        while (input[nb_before_dot] && input[nb_before_dot] == 0)
+            begin_with_zero++;
+        nb_before_dot++;
+    }
+    if (nb_before_dot >= 6)
+        std::cout << "double: " << d << ".0" << std::endl;
+    else
+        std::cout << "double: " << d << std::endl;
 }
 
 static void convertFloatToOtherTypes(const std::string& input)
@@ -331,7 +335,7 @@ static void convertFloatToOtherTypes(const std::string& input)
     float f = std::strtof(input.c_str(), NULL);
     int i = static_cast<int>(f);
     char c = static_cast<char>(f);
-    if (isprint(c) == false && !(i >= 0 && i <= 127))
+    if (isprint(c) == false || !(i >= 0 && i <= 127) || (f > 127))
         std::cout << "char: impossible" << std::endl;
     else if((i >= 0 && i <= 31) || i == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -339,16 +343,18 @@ static void convertFloatToOtherTypes(const std::string& input)
         std::cout << "char: '" << c << "'" << std::endl;
     double d = static_cast<double>(f);
     std::cout << "int: " << i << std::endl;
-    if (needZeroF(input,1) == true)
-        std::cout << "float: " << f << ".0f" << std::endl;
-    else
+    if (f == i)
+    {
+        std::cout << std::fixed;
+        std::cout.precision(1);
+    }
         std::cout << "float: " << f << "f" << std::endl;
     if (d == i)
     {
         std::cout << std::fixed;
         std::cout.precision(1);
     }
-    std::cout << "double: " << d << std::endl;
+        std::cout << "double: " << d << std::endl;
 }
 
 
@@ -356,22 +362,22 @@ void ScalarConverter::convert(const std::string& stringToConvert)
 {
     if (isAChar(stringToConvert))
     {
-        std::cout << "is char" << std::endl;
+        //std::cout << "is char" << std::endl;
         convertCharToOtherTypes(stringToConvert);
     }
     else if (isAInt(stringToConvert))
     {
-        std::cout << "is int" << std::endl;
+        //std::cout << "is int" << std::endl;
         convertIntToOtherTypes(stringToConvert);
     }
     else if (isADouble(stringToConvert))
     {
-        std::cout << "is double" << std::endl;
+        //std::cout << "is double" << std::endl;
         convertDoubleToOtherTypes(stringToConvert);
     }
     else if (isAFloat(stringToConvert))
     {
-        std::cout << "is float" << std::endl;
+        //std::cout << "is float" << std::endl;
         convertFloatToOtherTypes(stringToConvert);
     }
     else if (stringToConvert == "-inff")
