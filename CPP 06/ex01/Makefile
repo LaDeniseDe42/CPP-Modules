@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/03 09:23:22 by qdenizar          #+#    #+#              #
-#    Updated: 2023/11/08 11:23:48 by qdenizar         ###   ########.fr        #
+#    Created: 2023/11/08 11:23:29 by qdenizar          #+#    #+#              #
+#    Updated: 2023/11/08 12:13:33 by qdenizar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = Serializer
 
-FILES = main ScalarConverter
+FILES = main Data Serializer
 
 SRCS = $(FILES:=.cpp)
 
