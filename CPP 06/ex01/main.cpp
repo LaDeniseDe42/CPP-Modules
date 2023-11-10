@@ -6,13 +6,17 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:14:14 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/08 13:09:02 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/10 09:58:40 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "Data.hpp"
 #include "Serializer.hpp"
+
+
+//on utilise le reinerpret_cast pour effectuer des conversions entre
+// des pointeurs ou des références de types sans rapport, comme les conversions de pointeurs vers des entiers.
 
 int main()
 {
@@ -24,13 +28,13 @@ int main()
     {
         std::cout << &dataObject << std::endl;
         std::cout << deserializedData << std::endl;
-        std::cout << "Test réussi : les adresses sont égaux." << std::endl;
+        std::cout << "Test réussi : les adresses sont les memes." << std::endl;
     }
     else
     {
         std::cout << &dataObject << std::endl;
         std::cout << deserializedData << std::endl;
-        std::cout << "Test échoué : les adresses ne sont pas égaux." << std::endl;
+        std::cout << "Test échoué : les adresses ne sont pas les memes." << std::endl;
     }
 
 
@@ -42,13 +46,13 @@ int main()
     {
         std::cout << &dataObject2 << std::endl;
         std::cout << detest2 << std::endl;
-        std::cout << "Test réussi : les adresses sont égaux." << std::endl;
+        std::cout << "Test réussi : les adresses sont les memes." << std::endl;
     }
     else
     {
         std::cout << &dataObject2 << std::endl;
         std::cout << detest2 << std::endl;
-        std::cout << "Test échoué : les adresses ne sont pas égaux." << std::endl;
+        std::cout << "Test échoué : les adresses ne sont pas les memes." << std::endl;
     }
     
     return (0);

@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/08 11:13:54 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:54:00 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,7 @@ static void convertIntToOtherTypes(const std::string& input)
        intmax = true;  
     long long int i = inputValue;
     char cara = static_cast<char>(i);
-    if (isprint(cara) == false || !(inputValue >= 0 && inputValue <= 127) || (inputValue > 127))
+    if (isprint(cara) == false && (!(inputValue >= 0 && inputValue <= 127) || (inputValue > 127)))
         std::cout << "char: impossible" << std::endl;
     else if((inputValue >= 0 && inputValue <= 31) || inputValue == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -296,7 +296,7 @@ static void convertDoubleToOtherTypes(const std::string& input)
 {
     double d = std::strtod(input.c_str(), 0);
     char c = static_cast<char>(d);
-    if (isprint(c) == false || !(d >= 0 && d <= 127) || (d > 127))
+    if (isprint(c) == false && (!(d >= 0 && d <= 127) || (d > 127)))
         std::cout << "char: impossible" << std::endl;
     else if((d >= 0 && d <= 31) || d == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -305,28 +305,52 @@ static void convertDoubleToOtherTypes(const std::string& input)
     int i = static_cast<int>(d);
     float f = static_cast<float>(d);
     std::cout << "int: " << i << std::endl;
-    if (f == i)
+    int nb_before_dot = 0;
+    int begin_with_zero = 0;
+    while (input[begin_with_zero] && input[begin_with_zero] == '0')
+        begin_with_zero++;
+    while (input[nb_before_dot + begin_with_zero] && input[nb_before_dot + begin_with_zero] != '.')
+        nb_before_dot++;
+    begin_with_zero++;
+    int nb_after_dot = 0;
+    int nb_zero_begin_after_dot = 0;
+    while (input[nb_before_dot + begin_with_zero + nb_zero_begin_after_dot] && input[nb_before_dot + begin_with_zero + nb_zero_begin_after_dot] == '0')
+      nb_zero_begin_after_dot++;
+    while (input[nb_before_dot + begin_with_zero + nb_after_dot + nb_zero_begin_after_dot])
+        nb_after_dot++;
+    if (nb_zero_begin_after_dot >= 1)
     {
-        std::cout << std::fixed;
-        std::cout.precision(1);
+        if (nb_before_dot + nb_zero_begin_after_dot >= 6)
+        {
+            if (nb_before_dot <= 6)
+                std::cout << "float: " << f << ".0f" << std::endl;
+            else
+                std::cout << "float: " << f << "f" << std::endl;
+        }
+        else
+        {
+            std::cout << "float: " << f <<"f" << std::endl;
+        }
     }
-        std::cout << "float: " << f << "f" << std::endl;
+    else
+    {
+        if (nb_before_dot >= 6)
+        {
+            if (nb_before_dot <= 6)
+                std::cout << "float: " << f << ".0f" << std::endl;
+            else
+                std::cout << "float: " << f << "f" << std::endl;
+        }
+        else
+        {
+            std::cout << "float: " << f  << "f" << std::endl;
+        }
+    }
     if (d == i)
     {
         std::cout << std::fixed;
         std::cout.precision(1);
     }
-    int nb_before_dot = 0;
-    int begin_with_zero = 0;
-    while (input[nb_before_dot] && input[nb_before_dot] != '.')
-    {
-        while (input[nb_before_dot] && input[nb_before_dot] == 0)
-            begin_with_zero++;
-        nb_before_dot++;
-    }
-    if (nb_before_dot >= 6)
-        std::cout << "double: " << d << ".0" << std::endl;
-    else
         std::cout << "double: " << d << std::endl;
 }
 
@@ -335,7 +359,7 @@ static void convertFloatToOtherTypes(const std::string& input)
     float f = std::strtof(input.c_str(), NULL);
     int i = static_cast<int>(f);
     char c = static_cast<char>(f);
-    if (isprint(c) == false || !(i >= 0 && i <= 127) || (f > 127))
+    if (isprint(c) == false && (!(i >= 0 && i <= 127) || (f > 127)))
         std::cout << "char: impossible" << std::endl;
     else if((i >= 0 && i <= 31) || i == 127)
         std::cout << "char: Non displayable" << std::endl;
@@ -343,12 +367,47 @@ static void convertFloatToOtherTypes(const std::string& input)
         std::cout << "char: '" << c << "'" << std::endl;
     double d = static_cast<double>(f);
     std::cout << "int: " << i << std::endl;
-    if (f == i)
+    int nb_before_dot = 0;
+    int begin_with_zero = 0;
+    while (input[begin_with_zero] && input[begin_with_zero] == '0')
+        begin_with_zero++;
+    while (input[nb_before_dot + begin_with_zero] && input[nb_before_dot + begin_with_zero] != '.')
+        nb_before_dot++;
+    begin_with_zero++;
+    int nb_after_dot = 0;
+    int nb_zero_begin_after_dot = 0;
+    while (input[nb_before_dot + begin_with_zero + nb_zero_begin_after_dot] && input[nb_before_dot + begin_with_zero + nb_zero_begin_after_dot] == '0')
+      nb_zero_begin_after_dot++;
+    while (input[nb_before_dot + begin_with_zero + nb_after_dot + nb_zero_begin_after_dot])
+        nb_after_dot++;
+    if (nb_zero_begin_after_dot >= 1)
     {
-        std::cout << std::fixed;
-        std::cout.precision(1);
+        if (nb_before_dot + nb_zero_begin_after_dot >= 6)
+        {
+            if (nb_before_dot <= 6)
+                std::cout << "float: " << f << "f" << std::endl;
+            else
+                std::cout << "float: " << f << "f" << std::endl;
+        }
+        else
+        {
+            std::cout << "float: " << f <<"f" << std::endl;
+        }
     }
-        std::cout << "float: " << f << "f" << std::endl;
+    else
+    {
+        if (nb_before_dot >= 6)
+        {
+            if (nb_before_dot <= 6)
+                std::cout << "float: " << f << ".0f" << std::endl;
+            else
+                std::cout << "float: " << f << "f" << std::endl;
+        }
+        else
+        {
+            std::cout << "float: " << f  << "f" << std::endl;
+        }
+    }
     if (d == i)
     {
         std::cout << std::fixed;
