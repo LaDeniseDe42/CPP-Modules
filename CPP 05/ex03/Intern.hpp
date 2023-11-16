@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:40:15 by root              #+#    #+#             */
-/*   Updated: 2023/10/27 11:19:28 by root             ###   ########.fr       */
+/*   Updated: 2023/11/10 14:42:44 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class Intern
 {
     public:
-        Intern(/* args */);
+        Intern();
         ~Intern();
         Intern(const Intern&	newIntern); //cpy constructor
         Intern& operator=(Intern const & objectToCopy); //Copy assignment operator 

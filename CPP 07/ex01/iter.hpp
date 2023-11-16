@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 11:53:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:11:09 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/11/14 11:29:01 by root              #+#    #+#             */
+/*   Updated: 2023/11/15 12:07:52 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#pragma once
 
-#include <cstring>
 
-#include "Contact.hpp"
-#include <ncurses.h>
-
-class PhoneBook
+template<typename T>
+void printArrayValue(T &iElement)
 {
-	private:
+	std::cout << iElement << " ";
+}
 
-	Contact	users[8];
-	std::string	buffer;
-
-	public:
-	
-	PhoneBook( void );
-	~PhoneBook( void );
-	static void	helloPhone(void);
-	void	addContact(void);
-	void	searchContact(void);
-	void	displayMyContact(int	index);
-};
-
-#endif
+template <typename T, typename T2, typename T3>
+void iter(T *adressOfArray, T2 lengthOfArray, T3 function)
+{
+    for (T2 i = 0; i < lengthOfArray; i++)
+        function(adressOfArray[i]);
+}

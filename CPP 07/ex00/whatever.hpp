@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 11:53:43 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:11:09 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/11/14 10:22:45 by root              #+#    #+#             */
+/*   Updated: 2023/11/15 12:07:57 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
 
-#include <cstring>
+template< typename T, typename F>
+void swap( T & a, F & b ) {
+    T tmp = a;
+    a = b;
+    b = tmp;
+}
 
-#include "Contact.hpp"
-#include <ncurses.h>
+template< typename T >
+T const & min( T const & a, T const & b ) {
+    return ( a < b ? a : b );
+}
 
-class PhoneBook
-{
-	private:
-
-	Contact	users[8];
-	std::string	buffer;
-
-	public:
-	
-	PhoneBook( void );
-	~PhoneBook( void );
-	static void	helloPhone(void);
-	void	addContact(void);
-	void	searchContact(void);
-	void	displayMyContact(int	index);
-};
-
-#endif
+template< typename T >
+T const & max( T const & a, T const & b ) {
+    return ( a > b ? a : b );
+}
