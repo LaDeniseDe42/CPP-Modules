@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:47:49 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/10 09:58:28 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:57:45 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,14 @@ void identify(Base& p)
 int main()
 {
     //stock l'adresse de A, B ou C dans base
+    std::cout << "TEST 1" << std::endl;
     Base *base = generate();
     identify(base);
     identify(*base);
     delete base;
     std::cout << std::endl;
 
+    std::cout << "TEST 2" << std::endl;
     Base *base1 = generate();
     identify(base1);
     identify(*base1);
@@ -106,12 +108,14 @@ int main()
     std::cout << std::endl;
 
     //test avec un pointeur NULL
+    std::cout << "TEST 3" << std::endl;
     Base *base2 = NULL;
     identify(base2);
     identify(*base2);
     std::cout << std::endl;
     
     //stock l'adresse d'une base
+    std::cout << "TEST 4" << std::endl;
     Base *base3 = new Base();
     identify(base3);
     identify(*base3);

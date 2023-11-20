@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:31:11 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:54:00 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:32:38 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const & objectToCopy
 {
 	//std::cout << "\033[33mScalarConverter Copy assignment operator called\033[0m " << std::endl;
 	if (this != &objectToCopy)
-	{
-        
+	{   
 	}
 	return (*this);
 }
@@ -304,7 +303,10 @@ static void convertDoubleToOtherTypes(const std::string& input)
         std::cout << "char: '" << c << "'" << std::endl;
     int i = static_cast<int>(d);
     float f = static_cast<float>(d);
-    std::cout << "int: " << i << std::endl;
+    if (input.length() > 12)
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << i << std::endl;
     int nb_before_dot = 0;
     int begin_with_zero = 0;
     while (input[begin_with_zero] && input[begin_with_zero] == '0')
@@ -366,7 +368,10 @@ static void convertFloatToOtherTypes(const std::string& input)
     else
         std::cout << "char: '" << c << "'" << std::endl;
     double d = static_cast<double>(f);
-    std::cout << "int: " << i << std::endl;
+    if (input.length() > 12)
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << i << std::endl;
     int nb_before_dot = 0;
     int begin_with_zero = 0;
     while (input[begin_with_zero] && input[begin_with_zero] == '0')

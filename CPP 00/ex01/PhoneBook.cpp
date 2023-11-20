@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 11:38:28 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/15 15:39:35 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:39:20 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	PhoneBook::searchContact(void)
 		return ;
 	}	
 	while (i != 8)
-	{
+	{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 		if (this->users[i].getInfo("first name").length() == 0)
 			break ;
    		this->displayMyContact(i);

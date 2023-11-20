@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:41:31 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/16 15:19:29 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:11:56 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <vector> //Un tableau dynamique qui peut être redimensionné automatiquement.
 #include <list>//Une liste doublement chaînée.
 #include <set>//Un ensemble ordonné d'éléments uniques
-#include <iterator>//ournit des classes et des fonctions pour travailler avec des itérateurs.
+#include <iterator>//Fournit des classes et des fonctions pour travailler avec des itérateurs.
 #include <functional>//Fournit des objets de fonction et des opérations sur les fonctions, notamment des foncteurs.
 #include <algorithm>//Fournit de nombreux algorithmes génériques tels que sort, find, transform, etc.
 
@@ -25,7 +25,6 @@
 
 int main() {
     // Utilisation avec std::vector
-   // std::vector<int> vec = {1, 2, 3, 4, 5};
    std::vector<int> vec;
     vec.push_back(1);
     vec.push_back(2);
@@ -35,7 +34,6 @@ int main() {
     easyfind(vec, 3);
 
     // Utilisation avec std::list
-    //std::list<int> lst = {10, 20, 30, 40, 50};
     std::list<int> lst;
     lst.push_back(10);
     lst.push_back(20);
@@ -45,7 +43,6 @@ int main() {
     easyfind(lst, 25);
 
     // Utilisation avec std::set
-    //std::set<int> s = {100, 200, 300, 400, 500};
     std::set<int> s;
     s.insert(100);
     s.insert(200);
