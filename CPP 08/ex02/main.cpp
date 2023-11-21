@@ -5,32 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 10:41:03 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/21 11:41:56 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/11/21 14:38:07 by qdenizar          #+#    #+#             */
+/*   Updated: 2023/11/21 15:01:09 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include"HumanB.hpp"
 
-int	main()
+#include <stack>
+#include "MutantStack"
+
+int main()
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("A BIG GUN");
-		jim.attack();
-	}
-	return (0);
+MutantStack<int> mstack;
+mstack.push(5);
+mstack.push(17);
+std::cout << mstack.top() << std::endl;
+mstack.pop();
+std::cout << mstack.size() << std::endl;
+mstack.push(3);
+mstack.push(5);
+mstack.push(737);
+//[...]
+mstack.push(0);
+MutantStack<int>::iterator it = mstack.begin();
+MutantStack<int>::iterator ite = mstack.end();
+++it;
+--it;
+while (it != ite)
+{
+std::cout << *it << std::endl;
+++it;
+}
+std::stack<int> s(mstack);
+return 0;
 }

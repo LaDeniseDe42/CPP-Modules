@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:23:13 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/20 15:46:50 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:40:21 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,14 @@
     }
 
 
-    T& Span::operator[](unsigned int index)
+    template <typename T>
+    static void print_tab(T me)
     {
-        if (index >= _n)
-            throw std::out_of_range("Index out of range");
-        return (_stockNValues[index]);
+        std::cout << "\033[0;32m" << me << " ; \033[0m";
+    }
+
+    void Span::printValue()
+    {
+        std::for_each(_stockNValues.begin(), _stockNValues.end(), print_tab<int>);
+        std:: cout << std::endl;
     }

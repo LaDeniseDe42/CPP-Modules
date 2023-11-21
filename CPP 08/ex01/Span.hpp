@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:23:15 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/20 15:53:03 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:27:32 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ class Span
         void addNumber(unsigned int valueToAdd);
         unsigned int shortestSpan() const;
         unsigned int longestSpan() const;
+        void printValue();
         
 };

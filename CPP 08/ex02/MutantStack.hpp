@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 10:41:03 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/21 11:41:56 by qdenizar         ###   ########.fr       */
+/*   Created: 2023/11/21 14:38:44 by qdenizar          #+#    #+#             */
+/*   Updated: 2023/11/21 15:56:23 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include"HumanB.hpp"
+#pragma once
 
-int	main()
+#include <stack>
+
+template <typedef T>
+class MutantStack : public std::stack
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("A BIG GUN");
-		jim.attack();
-	}
-	return (0);
+        public:
+    //Orthodox Canonical Form
+    MutantStack();//default constructor
+    ~MutantStack();//destructor
+    MutantStack(const MutantStack<T> &	newMutantStack); //cpy constructor
+    MutantStack<T>& operator=(const MutantStack<T>& objectToCopy); //Copy assignment operator
+
+        private:
+    
 }
