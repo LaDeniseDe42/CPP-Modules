@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:07 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/22 17:22:20 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:37:34 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int main()
 {
-
+std::cout << "\033[1mTEST AVEC LE MAIN FOURNIS\033[0m " << std::endl;
 //main fournis
 MutantStack<int> mstack;
 mstack.push(5);
@@ -41,8 +41,10 @@ std::cout << *it << std::endl;
 ++it;
 }
 std::stack<int> s(mstack);
-//std::stack<int, std::vector<int> > a;
-//mes tests
+std::cout << std::endl;
+
+
+std::cout << "\033[1mTEST AVEC CHAR \033[0m" << std::endl;
 MutantStack<char> Axel;
 for(int i = 0; i != 26; i++)
 {
@@ -53,7 +55,9 @@ for(MutantStack<char>::iterator it2 = Axel.begin(); it2 != Axel.end(); it2++)
     std::cout << "\033[0;33m" << *it2 << "\033[0m ... ";
 }
 std::cout << std::endl;
+std::cout << std::endl;
 
+std::cout << "\033[1mTEST AVEC DES FLOATS ET COPY OPERATOR \033[0m" << std::endl;
 MutantStack<float> test3;
 test3.push(42.42);
 MutantStack<float> test4(test3);
@@ -63,10 +67,22 @@ for(MutantStack<float>::iterator its2 = test4.begin(); its2 != test4.end(); its2
     std::cout << "\033[0;33m" << *its2 << "\033[0m ... ";
 }
 std::cout << std::endl;
+std::cout << std::endl;
 
-
-
-
+std::cout << "\033[1mTEST AVEC STRING\033[0m" << std::endl;
+MutantStack<std::string> testString;
+testString.push("Patate");
+testString.push("Gants");
+testString.push("Souris");
+testString.push("stop");
+testString.push("popMePlease");
+testString.pop();
+for(MutantStack<std::string>::iterator its2 = testString.begin(); its2 != testString.end(); its2++)
+{
+    std::cout << "\033[0;33m" << *its2 << "\033[0m ... ";
+}
+std::cout << std::endl;
+std::cout << std::endl;
 
 
 return 0;
