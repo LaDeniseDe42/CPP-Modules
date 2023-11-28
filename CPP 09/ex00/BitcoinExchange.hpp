@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:29 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/27 13:51:07 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:17:18 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ class BitcoinExchange
     BitcoinExchange(const BitcoinExchange &	newBitcoinExchange); //cpy constructor
     BitcoinExchange& operator=(const BitcoinExchange& objectToCopy); //Copy assignment operator
 
+    // void insert(const std::string& date, const T& value) {
+    //     stockFile.insert(std::make_pair(date, value));
+    // }
+
+    private :
+    //std::multimap<std::string, T> stockFile;
     // std::map<std::string, std::string> stockOfFile;
     // std::map<std::string, std::string> stockOfData;
     // std::map<std::string, std::string> stockOfResult;

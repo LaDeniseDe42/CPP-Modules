@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:13 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/27 11:10:31 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:17:23 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ BitcoinExchange::BitcoinExchange()
     // stockOfData = NULL;
     // stockOfFile = NULL;
     // stockOfResult = NULL; 
+    //stockFile = NULL;
 }
 
     
