@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:17 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/10/30 10:16:31 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/29 09:10:57 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ DiamondTrap::DiamondTrap(std::string Name)
     this->AttackDamage = 30;
     this->HitPoints = 100;
     this->EnergyPoints = 50;
+    //this->EnergyPoints = FragTrap::EnergyPoints;
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:25:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/28 16:31:02 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:14:03 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,27 @@ int main(int argc, char **argv)
             char *returnOfTof;
             float valuefloat = std::strtof(value.c_str(), &returnOfTof);
             if (value.length() > 7 || valuefloat >= 1000)
+            {
                 stockFile.insert(std::make_pair("Error: too large a number", 666));
-            else if (value.find('-') == 0 || valuefloat <= 0)
+                std::cout <<"Error: too large a number"<< std::endl;
+            }
+            else if (valuefloat <= 0 && lineNumber != 0)
+            {
                 stockFile.insert(std::make_pair("Error: not a positive number.", 666));
+                std::cout << "Error: not a positive number."<< std::endl;
+            }
             else
+            {
                 stockFile.insert(std::make_pair(date, valuefloat));
+                if (lineNumber != 0)
+                    std::cout << date << "=> " << value  << " = "<< "A REMPLACER" << std::endl;
+            }
         }
         else
         {
             stockFile.insert(std::make_pair("Error: bad input =>  " + line, lineNumber));
+            if (lineNumber != 0)
+                std::cout << "Error: bad input =>  " << date << std::endl;
         }
         lineNumber++;
     }
@@ -87,19 +99,19 @@ int main(int argc, char **argv)
         dataLineNumber++;
     }
 
-    for (std::map<std::string, float>::iterator it = stockFile.begin(); it != stockFile.end(); ++it)
-    {
-        const std::string& date2 = it->first;
-        const float& values2 = it->second;
-        if (date2.find("Error: bad input") == 0)
-            std::cout << date2 << std::endl;
-        else if (date2.find("Error: too large") == 0)
-            std::cout <<date2 << std::endl;
-        else if (date2.find("Error: not a positive") == 0)
-            std::cout <<date2 << std::endl;
-        else
-            std::cout << date2 << "=> " << values2  << " = "<< "A REMPLACER" << std::endl;
-    }
+    // for (std::map<std::string, float>::iterator it = stockFile.begin(); it != stockFile.end(); ++it)
+    // {
+    //     const std::string& date2 = it->first;
+    //     const float& values2 = it->second;
+    //     if (date2.find("Error: bad input") == 0)
+    //         std::cout << date2 << std::endl;
+    //     else if (date2.find("Error: too large") == 0)
+    //         std::cout <<date2 << std::endl;
+    //     else if (date2.find("Error: not a positive") == 0)
+    //         std::cout <<date2 << std::endl;
+    //     else
+    //         std::cout << date2 << "=> " << values2  << " = "<< "A REMPLACER" << std::endl;
+    // }
 
     
 
