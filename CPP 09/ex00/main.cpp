@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:25:30 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/29 10:14:03 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:10:24 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,79 +25,87 @@ int main(int argc, char **argv)
         std::cerr << "Error: could not open file." << std::endl;
         return (1);
     }
-    std::ifstream file(argv[1]);
-    if (!file.is_open())
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-        return 1;
-    }
+    // std::ifstream file(argv[1]);
+    // if (!file.is_open())
+    // {
+    //     std::cerr << "Error: could not open file." << std::endl;
+    //     return 1;
+    // }
+    BitcoinExchange Data(argv[1], "data.csv");
+    Data.fillStockData(Data);
+    // Data.printData(Data);
+    Data.printFile(Data);
+    
 
     //first file
-    std::multimap<std::string, float> stockFile;
-    std::string line;
-    double lineNumber = 0;
+    // std::multimap<std::string, float> stockFile;
+    // std::string line;
+    // double lineNumber = 0;
     
-    while (std::getline(file, line))
-    {
-        std::istringstream lineT(line);
-        std::string date;
-        std::string value;
-        if (std::getline(lineT, date, '|') && std::getline(lineT, value, '|'))
-        {
-            char *returnOfTof;
-            float valuefloat = std::strtof(value.c_str(), &returnOfTof);
-            if (value.length() > 7 || valuefloat >= 1000)
-            {
-                stockFile.insert(std::make_pair("Error: too large a number", 666));
-                std::cout <<"Error: too large a number"<< std::endl;
-            }
-            else if (valuefloat <= 0 && lineNumber != 0)
-            {
-                stockFile.insert(std::make_pair("Error: not a positive number.", 666));
-                std::cout << "Error: not a positive number."<< std::endl;
-            }
-            else
-            {
-                stockFile.insert(std::make_pair(date, valuefloat));
-                if (lineNumber != 0)
-                    std::cout << date << "=> " << value  << " = "<< "A REMPLACER" << std::endl;
-            }
-        }
-        else
-        {
-            stockFile.insert(std::make_pair("Error: bad input =>  " + line, lineNumber));
-            if (lineNumber != 0)
-                std::cout << "Error: bad input =>  " << date << std::endl;
-        }
-        lineNumber++;
-    }
+    // while (std::getline(file, line))
+    // {
+    //     std::istringstream lineT(line);
+    //     std::string date;
+    //     std::string value;
+    //     if (std::getline(lineT, date, '|') && std::getline(lineT, value, '|'))
+    //     {
+    //         char *returnOfTof;
+    //         float valuefloat = std::strtof(value.c_str(), &returnOfTof);
+    //         if (value.length() > 7 || valuefloat >= 1000)
+    //         {
+    //             stockFile.insert(std::make_pair("Error: too large a number", 666));
+    //             std::cout <<"Error: too large a number"<< std::endl;
+    //         }
+    //         else if (valuefloat <= 0 && lineNumber != 0)
+    //         {
+    //             stockFile.insert(std::make_pair("Error: not a positive number.", 666));
+    //             std::cout << "Error: not a positive number."<< std::endl;
+    //         }
+    //         else
+    //         {
+    //             stockFile.insert(std::make_pair(date, valuefloat));
+    //             if (lineNumber != 0)
+    //                 std::cout << date << "=> " << value  << " = "<< "A REMPLACER PAR" << value << " * DATAVALUE"<<  std::endl;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         stockFile.insert(std::make_pair("Error: bad input =>  " + line, lineNumber));
+    //         if (lineNumber != 0)
+    //             std::cout << "Error: bad input =>  " << date << std::endl;
+    //     }
+    //     lineNumber++;
+    // }
     
     //data.csv
-    std::ifstream dataFile("data.csv");
-    if (!dataFile.is_open())
-    {
-        std::cerr << "Erreur : impossible d'ouvrir le fichier." << std::endl;
-        return 1;
-    }
-    std::multimap<std::string, float> stockData;
-    std::string dataLine;
-    int dataLineNumber = 0;
+    // std::ifstream dataFile("data.csv");
+    // if (!dataFile.is_open())
+    // {
+    //     std::cerr << "Erreur : impossible d'ouvrir le fichier." << std::endl;
+    //     return 1;
+    // }
+    // std::multimap<std::string, float> stockData;
+    // std::string dataLine;
+    // int dataLineNumber = 0;
 
-    while (std::getline(dataFile, dataLine))
-    {
-        std::istringstream lineD(dataLine);
-        std::string dataDate;
-        std::string dataValue;
-        if (std::getline(lineD, dataDate, ',') && std::getline(lineD, dataValue, ','))
-        {
-            char *returnOfTof2;
-            float valuefloatData = std::strtof(dataValue.c_str(), &returnOfTof2);
-            stockData.insert(std::make_pair(dataDate, valuefloatData));
-        }
-        else
-            std::cerr << "Error: Invalid dataLine format: " << dataLine << std::endl;
-        dataLineNumber++;
-    }
+    // while (std::getline(dataFile, dataLine))
+    // {
+    //     std::istringstream lineD(dataLine);
+    //     std::string dataDate;
+    //     std::string dataValue;
+    //     if (std::getline(lineD, dataDate, ',') && std::getline(lineD, dataValue, ','))
+    //     {
+    //         char *returnOfTof2;
+    //         float valuefloatData = std::strtof(dataValue.c_str(), &returnOfTof2);
+    //         stockData.insert(std::make_pair(dataDate, valuefloatData));
+    //     }
+    //     else
+    //     {
+    //         //std::cerr << "Error: Invalid dataLine format: " << dataLine << std::endl;
+    //         stockData.insert(std::make_pair("Error: Invalid dataLine format: ", 666));
+    //     }
+    //     dataLineNumber++;
+    // }
 
     // for (std::map<std::string, float>::iterator it = stockFile.begin(); it != stockFile.end(); ++it)
     // {
@@ -123,8 +131,8 @@ int main(int argc, char **argv)
     //     std::cout << date2 << " => " << values2  << std::endl;
     // }
     
-    file.close();
-    dataFile.close();
+    //file.close();
+    //dataFile.close();
    
     return (0);
 }
