@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:13 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/30 11:55:53 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:16:41 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,10 @@ float BitcoinExchange::findAndDoOperation(BitcoinExchange & Data, std::string da
     else
     {
         it = Data.stockData.upper_bound(date);
-        it--;
+        if (it == Data.stockData.begin())
+            it++;
+        else
+            it--;
         const float& values2 = it->second * value;
         return (values2);
     }  
