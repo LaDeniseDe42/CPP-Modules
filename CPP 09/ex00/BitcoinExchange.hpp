@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:29 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/29 12:35:19 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:45:12 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class BitcoinExchange
     void printData(BitcoinExchange & Data);
     int printFile(BitcoinExchange & Data);
     float findAndDoOperation(BitcoinExchange & Data, std::string date, float value);
+    bool checkIsValidDate(std::string date);
     std::string getDataName();
     std::string getFileName();
 

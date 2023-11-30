@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:13 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/11/29 12:39:55 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:55:53 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ BitcoinExchange::~BitcoinExchange()
 //cpy constructor
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &	newBitcoinExchange) 
 {
-    (void)newBitcoinExchange;
+    //(void)newBitcoinExchange;
     
     this->fileName = newBitcoinExchange.fileName;
     this->fileDataName = newBitcoinExchange.fileDataName;
@@ -129,21 +129,26 @@ int BitcoinExchange::printFile(BitcoinExchange & Data)
         {
             char *returnOfTof;
             float valuefloat = std::strtof(value.c_str(), &returnOfTof);
-            if (value.length() > 7 || valuefloat >= 1000)
-            {
-                Data.stockFile.insert(std::make_pair("Error: too large a number", 666));
-                std::cout <<"Error: too large a number"<< std::endl;
-            }
-            else if (valuefloat <= 0 && lineNumber != 0)
+            if (valuefloat <= 0 && lineNumber != 0)
             {
                 Data.stockFile.insert(std::make_pair("Error: not a positive number.", 666));
                 std::cout << "Error: not a positive number."<< std::endl;
+            }
+            else if (value.length() > 7 || valuefloat >= 1000)
+            {
+                Data.stockFile.insert(std::make_pair("Error: too large a number", 666));
+                std::cout <<"Error: too large a number"<< std::endl;
             }
             else
             {
                 Data.stockFile.insert(std::make_pair(date, valuefloat));
                 if (lineNumber != 0)
-                    std::cout << date << "=> " << value  << " = "<< Data.findAndDoOperation(Data, date, valuefloat)<<  std::endl;
+                {
+                    if (Data.checkIsValidDate(date) == false)
+                        std::cout << "Error: invalid date  => " << date << std::endl;
+                    else
+                        std::cout << date << "=> " << value  << " = "<< Data.findAndDoOperation(Data, date, valuefloat)<<  std::endl;    
+                }
             }
         }
         else
@@ -173,6 +178,116 @@ float BitcoinExchange::findAndDoOperation(BitcoinExchange & Data, std::string da
         it--;
         const float& values2 = it->second * value;
         return (values2);
+    }  
+}
+
+bool BitcoinExchange::checkIsValidDate(std::string date)
+{
+    if (date.length() != 11)
+        return (false);
+    for (int i = 0; i < 10; i++)
+    {
+        if (i == 4 || i == 7)
+        {
+            if (date[i] != '-')
+                return (false);
+        }
+        else
+        {
+            if (!std::isdigit(date[i]))
+                return (false);
+        }
     }
+    //std::cout << "date = " << date << std::endl;
+    std::string year = date.substr(0, 4);
+    std::string month = date.substr(5, 2);
+    std::string day = date.substr(8, 2);
+    //std::cout << " std::string y/m/d = " << year << "-" << month << "-" << day << std::endl;
+    int yearI = std::atoi(year.c_str()); 
+    int monthI = std::atoi(month.c_str());
+    int dayI = std::atoi(day.c_str());
+    int bissextile = 666;
+    if (monthI > 12)
+        return (false);
+    if (year.length() > 4 || month.length() > 2 || day.length() > 2)
+        return (false);
+    if ((yearI % 4 == 0 && yearI % 100 != 0) || (yearI % 400 == 0))
+    {
+        bissextile = 0;
+    }
+    else
+        bissextile = 1;
     
+    switch (monthI)
+    {
+        case 1:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false);
+        }
+        case 2:
+        {
+            if (bissextile == 0)
+            {
+                if ((dayI <= 0 || dayI > 29))
+                    return(false);  
+            }
+            else if (bissextile == 1)
+            {
+                if (dayI <= 0 || dayI > 28)
+                    return(false); 
+            }
+        }
+        case 3:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false);
+        }
+        case 4:
+        {
+            if (dayI <= 0 || dayI > 30)
+                return(false);
+        }
+        case 5:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false);
+        }
+        case 6:
+        {
+            if (dayI <= 0 || dayI > 30)
+                return(false);
+        }
+        case 7:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false);
+        }
+        case 8:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false); 
+        }
+        case 9:
+        {
+            if (dayI <= 0 || dayI > 30)
+                return(false); 
+        }
+        case 10:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false);  
+        }
+        case 11:
+        {
+            if (dayI <= 0 || dayI > 30)
+                return(false);  
+        }
+        case 12:
+        {
+            if (dayI <= 0 || dayI > 31)
+                return(false); 
+        }
+    } 
+    return (true);
 }
