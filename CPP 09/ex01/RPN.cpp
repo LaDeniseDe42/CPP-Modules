@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:50 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/01 14:11:27 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/01 16:09:37 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@
         int i = 0;
         int j = 0;
         int test = 1;
-        char *negativeNb;
+        char negativeNb;
         char nbPositive;
         long int nbP;
         long int nb;
-        bool increment = false;
+        int increment = 0;
         while (argv[i])
         {
             if (argv[i] == ' ' || argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/' || argv[i] == '0' || argv[i] == '1' || argv[i] == '2' || argv[i] == '3' || argv[i] == '4' || argv[i] == '5' || argv[i] == '6' || argv[i] == '7' || argv[i] == '8' || argv[i] == '9')
@@ -70,46 +70,45 @@
             }
             if (j == 0)
             {
-                std::cout << "dans le 1er if car argv[i] = " << argv[i] << std::endl;
                 if (argv[i] == ' ' || (argv[i] >= '0' && argv[i] <= '9') || (argv[i +1] && argv[i] == '-' && (argv[i + 1] >= '0' && argv[i +1] <= '9')))
                 {
-                    std::cout << "dans le 2ieme if car argv[i] = " << argv[i] << std::endl;
-                    while (argv[i] || argv[i] == '+' || argv[i] == '*' || argv[i] == '/')
+                    while (argv[i] && (argv[i] != '+' || argv[i] != '*' || argv[i] != '/'))
                     {
-                        if (argv[i + 1] && argv[i] == '-' && (argv[i + 1] >= '0' && argv[i + 1] <= '9'))
+                        std::cout << "\033[0;31mi a chaque debut de bouble = \033[0m" << i << std::endl;
+                        if (increment == 0 && argv[i + 1] && argv[i] == '-' && (argv[i + 1] >= '0' && argv[i + 1] <= '9'))
                         {
-                            std::cout << "je suis dans le premier if et test = " << test++ << std::endl;
-                            negativeNb[0] = argv[i];
-                            negativeNb[1] = argv[i + 1];
-                            std::cout << "negativeNb[0] = " << negativeNb[0] << " et de 1 = " << negativeNb[1] << std::endl;
-                            std::cout << "negativeNb = " << negativeNb << std::endl;
-                            nb = std::atoi(negativeNb);
+                            negativeNb = argv[i + 1];
+                            nb = std::atoi(&negativeNb);
+                            nb = -nb;
                             std::cout << "nb = " << nb << std::endl;
                             _stack.push(nb);
-                            negativeNb = NULL;
+                            std::cout << "stack top apres push 1er if = " << _stack.top() << std::endl;
+                            negativeNb = 0;
                             nb = 0;
                             i++;
+                            i++;
                             j++;
-                            increment = true;
+                            increment = 1;
                         }
                         else if (argv[i +1] && argv[i] == '-' && (argv[i + 1] < '0' && argv[i + 1] > '9'))
                         {
                             std::cout << "break car - et pas de chiffre apres" << std::endl;
                             break ;
                         }
-                        else if (argv[i +1] && (argv[i +1] < '0' || argv[i +1] > '9') && (argv[i] >= '0' && argv[i] <= '9'))
+                        else if (increment == 0 && argv[i +1] && (argv[i +1] < '0' || argv[i +1] > '9') && (argv[i] >= '0' && argv[i] <= '9'))
                         {
                             std::cout << "je suis dans le premier else if et test = " << test++ << std::endl;
                             nbPositive = argv[i];
                             nbP = std::atoi(&nbPositive);
                             _stack.push(nbP);
-                            increment = true;
+                            std::cout << "stack top apres le esle if = " << _stack.top() << std::endl;
+                            increment = 2;
                             i++;
                             j++;
                         }
-                        std::cout << "stack top = " << _stack.top() << std::endl;
-                        if (increment == true)
-                            increment = false;
+                        std::cout << "stack top apres tout le bordel= " << _stack.top() << std::endl;
+                        if (increment == 1 || increment == 2)
+                            increment = 0;
                         else
                             i++;
                     }
@@ -125,7 +124,83 @@
                 return (3);
             else
             {
-                std::cout << "ok pour la suite" << std::endl;
+                std::cout << "ok pour la suite avec argv[i] qui vaut " << argv[i] << std::endl;
+                while (argv[i] == ' ')
+                    i++;
+                if (argv[i] == '+')
+                {
+                    std::cout << "dans le + car argv[i] = " << argv[i] << std::endl;
+                    if (_stack.size() < 2)
+                        return (2);
+                    else
+                    {
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb = _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb += _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        _stack.push(nb);
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                    }
+                }
+                else if (argv[i] == '-')
+                {
+                    std::cout << "dans le - car argv[i] = " << argv[i] << std::endl;
+                    if (_stack.size() < 2)
+                        return (2);
+                    else
+                    {
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb = _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb = _stack.top() - nb;
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        _stack.push(nb);
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                    }
+                }
+                else if (argv[i] == '*')
+                {
+                    std::cout << "dans le * car argv[i] = " << argv[i] << std::endl;
+                    if (_stack.size() < 2)
+                        return (2);
+                    else
+                    {
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb = _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb *= _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        _stack.push(nb);
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                    }
+                }
+                else if (argv[i] == '/')
+                {
+                    std::cout << "dans le / car argv[i] = " << argv[i] << std::endl;
+                    if (_stack.size() < 2)
+                        return (2);
+                    else
+                    {
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        nb = _stack.top();
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        if (nb == 0)
+                            return (4);
+                        nb = _stack.top() / nb;
+                        _stack.pop();
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                        _stack.push(nb);
+                        std::cout << "stack top = " << _stack.top() << std::endl;
+                    }
+                }
             }
         }
         return (0);
