@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:50 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/01 16:09:37 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/01 16:13:33 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@
                     while (argv[i] && (argv[i] != '+' || argv[i] != '*' || argv[i] != '/'))
                     {
                         std::cout << "\033[0;31mi a chaque debut de bouble = \033[0m" << i << std::endl;
+                        if ((argv[i] == '+' || argv[i] == '*' || argv[i] == '/'))
+                            break ;
                         if (increment == 0 && argv[i + 1] && argv[i] == '-' && (argv[i + 1] >= '0' && argv[i + 1] <= '9'))
                         {
                             negativeNb = argv[i + 1];
