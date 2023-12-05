@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:53 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/04 13:58:59 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/05 09:39:52 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int    main(int argc, char **argv)
     i = rpn.parse(argv[1], 0);
     if (i != 0)
     {
-        std::cout << "Erreur ?" <<std::endl;
         rpn.error(i);
         return (1);
     }
