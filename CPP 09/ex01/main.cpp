@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:53 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/05 09:39:52 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:48:07 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int    main(int argc, char **argv)
         std::cout << "Usage: ./RPN \"Inverse polish notation\"" << std::endl;
         return (1);
     }
-    std::cout << "argv[1] = " << argv[1] << std::endl; 
+    //std::cout << "argv[1] = " << argv[1] << std::endl; 
     RPN rpn;
-    rpn.setNb();
-    i = rpn.parse(argv[1], 0);
+    i = rpn.parse(argv[1]);
+    rpn.rpn(argv[1]);
     if (i != 0)
     {
         rpn.error(i);

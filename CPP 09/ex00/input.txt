@@ -14,3 +14,4 @@ date | value
 YES indeed I'm not a valide line :(
 YYYY-MM-DD | 3
 ||||-||-|| | 8
+2012-01-11 | 2147483648888888888

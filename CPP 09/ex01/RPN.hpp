@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:46 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/04 15:08:09 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:43:38 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class RPN
 {
 private:
-    std::stack< long long int> _stack;
+    std::stack<long long int> _stack;
     size_t nbResult;
 public:
     public:
@@ -30,14 +30,9 @@ public:
     ~RPN();//destructor
     RPN(const RPN &	newRPN); //cpy constructor
     RPN& operator=(const RPN& objectToCopy); //Copy assignment operator
-     
-    // typedef typename std::stack<T>::container_type::iterator iterator;
-    // iterator begin();
-    // iterator end();
 
-    int     parse(char *argv, int z);
-    int    doOp(char *argv, int i);
-    void    print();
+    int     parse(const std::string argv);
+    int     doOp(const char ope);
+    int     rpn(std::string argv);
     void	error(int i);
-    void    setNb();
 };
