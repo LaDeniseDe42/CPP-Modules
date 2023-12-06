@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:50 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/06 11:05:04 by root             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:22:54 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@
 		case '/':
         {
             if (topNumber == 0)
-                return (4); //division by zero
+                return (4);
 			_stack.push(firstToBePush / topNumber);
 			break;   
         }
@@ -118,10 +118,7 @@
             if (argv[i] == '-' || argv[i] == '+' || argv[i] == '/' || argv[i] == '*' || argv[i] == ' ' || (argv[i] >= '0' && argv[i] <= '9'))
                 ;
             else
-            {
-               std::cout << "argv[i] = [" << argv[i] << "]" << std::endl; 
 			    return (1);
-            }
 		    if (i % 2 == 1)
             {
 			    if (argv[i] != ' ')
