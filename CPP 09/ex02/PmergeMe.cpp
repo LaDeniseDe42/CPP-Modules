@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:32:01 by root              #+#    #+#             */
-/*   Updated: 2023/12/06 15:11:27 by root             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:43:56 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& objectToCopy)
     return (*this);
 }
 
+int     PmergeMe::verifArg(long long int numberOfNumbers, char **argv)
+{
+    for (int i = 1; i < numberOfNumbers +1; i++)
+    {
+        for (size_t k = 0; k < std::strlen(argv[i]); k++)
+        {
+            if (!std::isdigit(argv[i][k]))
+                return (1);   
+        }
+    }
+    return (0);
+}
+
 void    PmergeMe::fillVector(long long int numberOfNumbers, char **argv)
 {
     int j = 1;
@@ -53,23 +66,54 @@ void    PmergeMe::fillList(long long int numberOfNumbers, char **argv)
         this->_list.push_back(std::atoi(argv[j++]));
 }
 
-void    PmergeMe::printVector()
+void    PmergeMe::printVector(int supFive)
 {
-    std::cout << "Vector: ";
-    for (this->_vit = this->_vector.begin(); this->_vit != this->_vector.end(); this->_vit++)
-        std::cout << *this->_vit << " ";
+    std::cout << "Before:  ";
+    if (supFive <= 5)
+    {
+        for (this->_vit = this->_vector.begin(); this->_vit != this->_vector.end(); this->_vit++)
+            std::cout << *this->_vit << " ";  
+    }
+    else
+    {
+        int z = 0;
+        for (this->_vit = this->_vector.begin(); this->_vit != this->_vector.end(); this->_vit++)
+        {
+            std::cout << *this->_vit << " ";
+            if (z == 4)
+                break;
+            z++;   
+        }
+        std::cout <<"[...]";
+    }
+    
     std::cout << std::endl;
 }
 
-void    PmergeMe::printList()
+void    PmergeMe::printList(int supFive)
 {
-    std::cout << "List: ";
-    for (this->_lit = this->_list.begin(); this->_lit != this->_list.end(); this->_lit++)
-        std::cout << *this->_lit << " ";
+    std::cout << "Before:  ";
+    if (supFive <= 5)
+    {
+        for (this->_lit = this->_list.begin(); this->_lit != this->_list.end(); this->_lit++)
+            std::cout << *this->_lit << " ";
+    }
+    else
+    {
+        int z = 0;
+        for (this->_lit = this->_list.begin(); this->_lit != this->_list.end(); this->_lit++)
+        {
+            std::cout << *this->_lit << " ";
+            if (z == 4)
+                break;
+            z++; 
+        }
+        std::cout <<"[...]";
+    }
     std::cout << std::endl;
 }
 
-void    PmergeMe::mergeVec()
+void    PmergeMe::mergeVec(int supFive)
 {
     std::vector<long long int> tmp;
     std::vector<long long int>::iterator it;
@@ -77,13 +121,28 @@ void    PmergeMe::mergeVec()
     for (it = this->_vector.begin(); it != this->_vector.end(); it++)
         tmp.push_back(*it);
     std::sort(tmp.begin(), tmp.end());
-    std::cout << "Merged vector: ";
-    for (it = tmp.begin(); it != tmp.end(); it++)
-        std::cout << *it << " ";
+    std::cout << "After:  ";
+    if (supFive <= 5)
+    {
+        for (it = tmp.begin(); it != tmp.end(); it++)
+            std::cout << *it << " ";  
+    }
+    else
+    {
+        int z = 0;
+        for (it = tmp.begin(); it != tmp.end(); it++)
+        {
+            std::cout << *it << " ";
+            if (z == 4)
+                break;
+            z++;
+        }
+        std::cout <<"[...]";
+    }
     std::cout << std::endl;
 }
 
-void    PmergeMe::mergeLi()
+void    PmergeMe::mergeLi(int supFive)
 {
     std::list<long long int> tmp;
     std::list<long long int>::iterator it;
@@ -91,8 +150,23 @@ void    PmergeMe::mergeLi()
     for (it = this->_list.begin(); it != this->_list.end(); it++)
         tmp.push_back(*it);
     tmp.sort();
-    std::cout << "Merged list: ";
-    for (it = tmp.begin(); it != tmp.end(); it++)
-        std::cout << *it << " ";
+    std::cout << "After:  ";
+    if (supFive <= 5)
+    {
+        for (it = tmp.begin(); it != tmp.end(); it++)
+            std::cout << *it << " ";  
+    }
+    else
+    {
+        int z = 0;
+        for (it = tmp.begin(); it != tmp.end(); it++)
+        {
+            std::cout << *it << " ";
+            if (z == 4)
+                break;
+            z++;   
+        }
+        std::cout <<"[...]";
+    }
     std::cout << std::endl;
 }

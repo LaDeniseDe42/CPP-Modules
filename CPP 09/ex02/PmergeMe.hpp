@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:31:47 by root              #+#    #+#             */
-/*   Updated: 2023/12/06 15:06:32 by root             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:30:16 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <cctype>
+#include <cstring>
 
 class PmergeMe
 {
@@ -33,8 +35,9 @@ public:
 
     void    fillVector(long long int nb, char  **argv);
     void    fillList(long long int nb, char **argv);
-    void    printVector();
-    void    printList();
-    void    mergeVec();
-    void    mergeLi();
+    void    printVector(int supFive);
+    void    printList(int supFive);
+    void    mergeVec(int supFive);
+    void    mergeLi(int supFive);
+    int     verifArg(long long int numberOfNumbers, char **argv);
 };
