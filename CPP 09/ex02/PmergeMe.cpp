@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:32:01 by root              #+#    #+#             */
-/*   Updated: 2023/12/07 14:43:56 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:10:31 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void    PmergeMe::fillVector(long long int numberOfNumbers, char **argv)
 {
     int j = 1;
     for (int i = 0; i < numberOfNumbers; i++)
-        this->_vector.push_back(std::atoi(argv[j++]));
+        this->_vector.push_back(std::atoll(argv[j++]));
 }
 
 void    PmergeMe::fillList(long long int numberOfNumbers, char **argv)
 {
     int j = 1;
     for (int i = 0; i < numberOfNumbers; i++)
-        this->_list.push_back(std::atoi(argv[j++]));
+        this->_list.push_back(std::atoll(argv[j++]));
 }
 
 void    PmergeMe::printVector(int supFive)
@@ -120,7 +120,8 @@ void    PmergeMe::mergeVec(int supFive)
 
     for (it = this->_vector.begin(); it != this->_vector.end(); it++)
         tmp.push_back(*it);
-    std::sort(tmp.begin(), tmp.end());
+    //std::sort(tmp.begin(), tmp.end());
+    tmp = fordJohnsonVec(tmp, supFive);
     std::cout << "After:  ";
     if (supFive <= 5)
     {
@@ -149,7 +150,8 @@ void    PmergeMe::mergeLi(int supFive)
 
     for (it = this->_list.begin(); it != this->_list.end(); it++)
         tmp.push_back(*it);
-    tmp.sort();
+    //tmp.sort();
+    tmp = fordJohnsonLi(tmp, supFive);
     std::cout << "After:  ";
     if (supFive <= 5)
     {
@@ -170,3 +172,66 @@ void    PmergeMe::mergeLi(int supFive)
     }
     std::cout << std::endl;
 }
+
+    std::vector<long long int>  PmergeMe::fordJohnsonVec(std::vector<long long int> tmp, int nbNb)
+    {
+        std::vector<long long int>::iterator it;
+        std::vector<long long int> left;
+        std::vector<long long int> right;
+        if (nbNb > 5)
+        {
+            for (it = tmp.begin(); it != tmp.end(); it++)
+            {
+                if (it < tmp.begin() + (nbNb / 2))
+                    left.push_back(*it);
+                else
+                    right.push_back(*it);
+            }
+            left = fordJohnsonVec(left, nbNb / 2);
+            right = fordJohnsonVec(right, nbNb / 2);
+            tmp.clear();
+            std::merge(left.begin(), left.end(), right.begin(), right.end(), std::back_inserter(tmp));        
+        }
+        else
+        {
+            for (size_t i = 1; i < tmp.size(); ++i)
+            {
+                long long int key = tmp[i];
+                int j = i - 1;
+
+                while (j >= 0 && tmp[j] > key)
+                {
+                    tmp[j + 1] = tmp[j];
+                    --j;
+                }
+                tmp[j + 1] = key;
+            }
+        }
+        return (tmp);
+    }
+    
+    std::list<long long int>    PmergeMe::fordJohnsonLi(std::list<long long int> tmp, int nbNb)
+    {
+        std::list<long long int>::iterator it;
+        std::list<long long int> left;
+        std::list<long long int> right;
+        if (nbNb > 5)
+        {
+            int i = 0;
+            for (it = tmp.begin(); it != tmp.end(); ++it, ++i)
+            {
+                if (i < nbNb / 2)
+                    left.push_back(*it);
+                else
+                    right.push_back(*it);
+            }
+            left = fordJohnsonLi(left, nbNb / 2);
+            right = fordJohnsonLi(right, nbNb / 2);
+            tmp.clear();
+            std::merge(left.begin(), left.end(), right.begin(), right.end(), std::back_inserter(tmp));        
+        }
+        else
+            tmp.sort();
+        return (tmp);
+        
+    }

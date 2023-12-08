@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:31:47 by root              #+#    #+#             */
-/*   Updated: 2023/12/07 14:30:16 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:39:49 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cstring>
+#include <climits>
 
 class PmergeMe
 {
@@ -27,6 +28,7 @@ private:
     std::list<long long int> _list;
     std::vector<long long int>::iterator _vit;
     std::list<long long int>::iterator _lit;
+
 public:
     PmergeMe();//default constructor
     ~PmergeMe();//destructor
@@ -39,5 +41,7 @@ public:
     void    printList(int supFive);
     void    mergeVec(int supFive);
     void    mergeLi(int supFive);
+    std::vector<long long int>  fordJohnsonVec(std::vector<long long int> tmp, int nbNb);
+    std::list<long long int>    fordJohnsonLi(std::list<long long int> tmp, int nbNb);
     int     verifArg(long long int numberOfNumbers, char **argv);
 };
