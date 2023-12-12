@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:31:47 by root              #+#    #+#             */
-/*   Updated: 2023/12/06 15:06:32 by root             ###   ########.fr       */
+/*   Updated: 2023/12/12 15:29:58 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <list>
+#include <deque>
 #include <algorithm>
+#include <cstring>
 
 class PmergeMe
 {
 private:
     std::vector<long long int> _vector;
-    std::list<long long int> _list;
+    std::deque<long long int> _deque;
     std::vector<long long int>::iterator _vit;
-    std::list<long long int>::iterator _lit;
+    std::deque<long long int>::iterator _deq;
 public:
     PmergeMe();//default constructor
     ~PmergeMe();//destructor
@@ -32,9 +33,12 @@ public:
     PmergeMe& operator=(const PmergeMe& objectToCopy); //Copy assignment operator
 
     void    fillVector(long long int nb, char  **argv);
-    void    fillList(long long int nb, char **argv);
-    void    printVector();
-    void    printList();
-    void    mergeVec();
-    void    mergeLi();
+    void    filldeque(long long int nb, char **argv);
+    void    printVector(int supFive);
+    void    printdeque(int supFive);
+    void    mergeVec(int supFive);
+    void    mergeDe(int supFive);
+    std::vector<long long int>  fordJohnsonVec(std::vector<long long int> tmp, int nbNb);
+    std::deque<long long int>    fordJohnsonDe(std::deque<long long int> tmp, int nbNb);
+    int     verifArg(long long int numberOfNumbers, char **argv);
 };
