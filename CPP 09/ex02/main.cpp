@@ -6,7 +6,7 @@
 /*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:32:13 by root              #+#    #+#             */
-/*   Updated: 2023/12/12 15:31:57 by qdenizar         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:50:57 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 {
     if (argc < 2)
     {
-        std::cout << "Usage: ./PmergeMe [number]" << std::endl;
+        std::cout << "Usage: ./PmergeMe [Positive number] [Positive number] ..." << std::endl;
         return (1);
     }
     srand(time(NULL));

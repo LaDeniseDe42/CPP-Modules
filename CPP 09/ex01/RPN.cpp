@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qdenizar <qdenizar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 09:22:50 by qdenizar          #+#    #+#             */
-/*   Updated: 2023/12/06 11:22:54 by root             ###   ########.fr       */
+/*   Updated: 2023/12/07 12:44:39 by qdenizar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@
     
     int    RPN::doOp(const char ope)
     {
-        int topNumber = _stack.top();
+        long long int topNumber = _stack.top();
 	    _stack.pop();
-	    int firstToBePush = _stack.top();
+	    long long int firstToBePush = _stack.top();
 	    _stack.pop();
 	    switch(ope) {
 		case '+':
